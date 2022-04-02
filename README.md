@@ -1,5 +1,7 @@
 # Mastering-Solidity-Programming-from-Scratch
+
 Fundamentals of Solidity for Ethereum Blockchain
+
 # Mastering Solidity Programming from the Scratch
 
 <br/>
@@ -93,12 +95,18 @@ Solidity is a statically-typed language (variables type should be specified at d
 
   * Has a compile-time fixed size.
   <br/>
+
   * Can store any type (`int`, `uint`, `address`, `struct` etc)
   <br/>
+
   * bytes1, bytes2, …, bytes32 store a sequence of bytes.
   <br/>
+
   * Has **member** called `length`
+ 
   <br/>
+
+<br/>
 
 > **Coding: Fixed-Size Arrays**
 
@@ -142,6 +150,7 @@ b3 = 'z'; // => 0x7A
 
 * **Dynamically-sized arrays**
 <br/>
+
   * `byte[ ]`
  <br/>
   
@@ -203,16 +212,18 @@ numbers = y;
  
 }
 ```
-
-2. **Strings**
+1. **Strings**
+   
 In Solidity, a string is a type passed by reference. The string data type is used for arbitrary-length UTF-8 and also costs more gas when compared to the fixed-size types of bytes1 to bytes32.
+
 <br/>
+
 
 > **String and Bytes**
 > String is equal to bytes but does not allow `length` or `index` access.
 <br/>
 
-3. ***Structs and Enums***
+1. ***Structs and Enums***
 
     * **Structs**
       * A struct is a collection of key->value pairs;
@@ -424,29 +435,55 @@ contract Property{
 ```
 
 ## Contract Address
+<br/>
 
 1. Any contract has its own unique address that is generated at deployment
+<br/>
+
 2. The contract address is generated based on the address of the account that deploys the contract and the no. of transactions of that account (nonce . It can’t be calculated in advance.
+<br/>
+
 3. Address is a variable type and has the following members:
+   
     * `balance`
+    <br/>
+
     * If the address is declared payable it has two additional members:
         * `transfer()`: should be used in most cases as it's the safest way to send ether
+        <br/>
+
         * `send()`: is like a low-level transfer(). If execution fails the contract will not stop and send() returns false
+       
     * `call()`, `delegatecall()`, `staticcall()`
 
 ## Payable functions and contract balance
 
 * A smart contract can receive ETH and can have an ETH balance only if there’s at least one payable function
+<br/>
+
 * A contract receives ETH in multiple ways:
+  
   * Just by sending ETH to the contract address from another account
+  <br/>
+
   * `receive() external payable` - for empty calldata (and any value)
+  <br/>
+
   * `fallback() external payable` - when no other function matches (not even the receive function).
+  <br/>
+
   * By calling a payable function and sending ETH with that transaction
+  <br/>
+
   * The ETH balance of the contract is in possession of anyone who can call the `transfer()` built-in function
 
 > **Demonstration**
 
+<br/>
+
 1. Let us demonstrate how to send ether to the contract's address using **Metamask** and **Remix** on **Rinkeby** **testnet** using the following **solidity** code given as a screenshot from the **Visual Studio Code Editor**
+ 
+<br/>
 
 ```
 //SPDX-License-Identifier: GPL-3.0
@@ -484,24 +521,26 @@ contract Deposit{
         return address(this).balance;
     }
 }
-```<br/>
+```
+<br/>
 
 ![Solidity Code](assets/Screenshot182.png)
-    <br/>
+
+<br/>
 
 2. Choose **Injected Web3** on **Remix** and deploy the contract. As soon as we deploy the contract on **Remix** , **Metamask** will pop up. Confirm the transaction on Metamask.
 
-   <br/>
+    <br/>
 
-   ![](assets/Screenshot170.png)
+    ![](assets/Screenshot170.png)
 
-   <br/>
+    <br/>
 
-   ![](assets/Screenshot171.png)
+    ![](Screenshot171.png)
 
-   <br/>
+    <br/>
 
-   ![](assets/Screenshot172.png)
+    ![](assets/Screenshot172.png)
 
 <br/>
 
@@ -514,12 +553,15 @@ contract Deposit{
 <br/>
 
 4. Now, check the balance by calling the `getBalance()` function and note the balance.
+ 
    <br/>
 
    ![](assets/Screenshot174.png)
+
 <br/>
 
 5. Next, we send **55555** Wei to the contact address. As soon as we call `sendEther()` on Remix, **Metamask** will popup. Confirm the transaction on **Metamask**.
+ 
     <br/>
 
     ![](assets/Screenshot175.png)
@@ -527,6 +569,7 @@ contract Deposit{
     <br/>
 
     ![](assets/Screenshot176.png)
+    
 <br/>
 
 6. Once the transaction is mined, Metamask will show the confirmation message. Now, call `getBalance` again and check the balance to find it whether it is **55555 Wei** or not.
