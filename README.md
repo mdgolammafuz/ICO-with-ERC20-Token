@@ -305,17 +305,13 @@ contract School{
     Instructor public schoolInstructor;
 } 
 ```
-
 <br/>
 
 4. **Mappings**
 <br/>
 
 * It’s a data structure that holds key->value pairs. Its similar to Python Dictionaries, JS objects or Java HashMaps
-<br/>
-
-* All keys must have the same type and all values must have the same type
-   
+* All keys must have the same type and all values must have the same type  
 * The keys can not be of types mapping, dynamic array, enum or struct. The values can be of any type including mapping
 * Mapping is always saved in storage, its’ a state variable. Mappings declared inside functions are also saved in storage
 * The mappings advantage is that lookup time is constant no matter mapping’s size
@@ -347,6 +343,7 @@ contract Auction{
     }
 }
 ```
+<br/>
 
 > **Knowledge check: Solidity data types**
 
@@ -356,11 +353,9 @@ contract Auction{
 mapping(address => uint) public bids;
 
 ```
-
 <br/>
 
 > 2. What is the default value for a bool variable?
-
 <br/>
 
 **Answer: `false`** 
@@ -368,7 +363,6 @@ mapping(address => uint) public bids;
 <br/>
 
 > 3. Consider the following variable declarations:
-
 <br/>
 
 ```
@@ -379,11 +373,9 @@ string public s1 = 'abc';
 <br/>
 
 **Answer: We can add a new element to `b1` by calling the `push()` member function, but we can't do the same for `s1`. We can return a element of `b1` using indexing which is not possible for `s1`** 
-
 <br/>
 
 > 4. Consider the following struct type declaration:
-
 <br/>
 
 ```
@@ -443,18 +435,14 @@ contract A{
 <br/>
 
 ## Solidity Variables
-
 <br/>
 
 ### Variable Types
-
 <br/>
 
 1. **State Variables**
 
 * Declared at contract level
-<br/>
-
 * Permanently stored in contract storage
 * Can be set as constants
 * Expensive to use, they cost gas
@@ -524,14 +512,12 @@ c) **Memory**
 <br/>
  
 ![](assets/Screenshot205.png)
-
 <br/>
 
 2. In the above code, `s1` is the reference to the same memory location where the **state** variable `cities` was saved. Although, we didn't touch **state** variable `cities` inside the function `f_storage` ( we have only changed `s1` which is defined inside the function `f_storage`), changing `s1` also changes the **state** variable.
 <br/>
 
 ![](assets/Screenshot205.png)
-
 <br/>
 
 > **Knowledge check: `memory` and `srorage`**
@@ -581,14 +567,11 @@ contract A{
 
 <br/>
 
-> **Reference Types**: **string, array, struct and mapping**
-<br/>
-
-<br/>
-
 ## Variable scope
+<br/>
 
 This brings us to a really interesting point: something called variable scope. Take a look at this. We have a variable called `saySomething` with a value of `"hello"`. Inside this `doStuff` function, we have another variable called saySomething with a value of `"goodbye"`. So, while we're inside this function, what do you think the value of `saySomething` is? If you said `goodbye`, you're right, the saySomething variable inside the function is said to be shadowing the same variable name outside the function, and as you can see that's a bad thing. When this function exits, the value of `saySomething` is now back to the original value of `"hello"`; that's because the variables declared inside this function only exist within the function. Once the function exits, those variables are gone. on exits, the value of `saySomething` is now back to the original value of `"hello"`; that's because the variables declared inside this function only exist within the function. Once the function exits, those variables are gone. Outside of the doStuff func there's not even a thing called `saySomethingElse` that can be accessed. That's an important point to remember when you're building your functions: what variables are needed inside the function and what data is needed from the function after it exits:
+<br/>
 
 ```
 string saySomething = "hello";
@@ -658,12 +641,10 @@ contract Property{
 1. `msg` -> contains information about the account that generates the transaction and about 
 the transaction or call, as well
 
-    * `msg.sender` -> account address that creates and sends the transaction
+   * `msg.sender` -> account address that creates and sends the transaction
     <br/>
-
-    * `msg.value` -> ETH value (represented in wei) sent to this contract
-
-    * `msg.data` -> data field in the transaction or call that called the function
+   * `msg.value` -> ETH value (represented in wei) sent to this contract
+   * `msg.data` -> data field in the transaction or call that called the function
 
 2. `this` -> the current contract, explicitly convertible to Address. `(address)this.balance` returns the contract balance
 3. `gasleft()` -> returns the remaining gas
@@ -672,56 +653,40 @@ the transaction or call, as well
 6. `block.difficulty`
 7. `block.gaslimit`
 8. `tx.gasprice` -> gas price of the transaction
-
 <br/>
 
 ## Contract Address
 <br/>
 
 1. Any contract has its own unique address that is generated at deployment
-<br/>
-
 2. The contract address is generated based on the address of the account that deploys the contract and the no. of transactions of that account (nonce . It can’t be calculated in advance.
-<br/>
-
 3. Address is a variable type and has the following members:
    
-    * `balance`
-    <br/>
+   * `balance`
+   * If the address is declared payable it has two additional members:
+   * `transfer()`: should be used in most cases as it's the safest way to send ether
+   * `send()`: is like a low-level transfer(). If execution fails the contract will not stop and send() returns false
+   * `call()`, `delegatecall()`, `staticcall()`
 
-    * If the address is declared payable it has two additional members:
-    * `transfer()`: should be used in most cases as it's the safest way to send ether
-    * `send()`: is like a low-level transfer(). If execution fails the contract will not stop and send() returns false
-    * `call()`, `delegatecall()`, `staticcall()`
+<br/>
 
 ## Payable functions and contract balance
+<br/>
 
 * A smart contract can receive ETH and can have an ETH balance only if there’s at least one payable function
-<br/>
-
 * A contract receives ETH in multiple ways:
-  
 * Just by sending ETH to the contract address from another account
-<br/>
-
 * `receive() external payable` - for empty calldata (and any value)
-<br/>
-
 * `fallback() external payable` - when no other function matches (not even the receive function).
-<br/>
-
 * By calling a payable function and sending ETH with that transaction
-<br/>
-
 * The ETH balance of the contract is in possession of anyone who can call the `transfer()` built-in function
-
 <br/>
 
 > **Demonstration: Reiceiving Ether**
 <br/>
 
 1. Let us demonstrate how to send ether to the contract's address using **Metamask** and **Remix** on **Rinkeby** **testnet** using the following **solidity** code given as a screenshot from the **Visual Studio Code Editor**
- <br/>
+<br/>
 
 ```
 //SPDX-License-Identifier: GPL-3.0
@@ -762,7 +727,6 @@ return address(this).balance;
 <br/>
 
 ![Solidity Code](assets/Screenshot182.png)
-
 <br/>
 
 2. Choose **Injected Web3** on **Remix** and deploy the contract. As soon as we deploy the contract on **Remix** , **Metamask** will pop up. Confirm the transaction on Metamask.
@@ -784,7 +748,7 @@ return address(this).balance;
 <br/>
 
 4. Now, check the balance by calling the `getBalance()` function and note the balance.
- <br/>
+<br/>
 
 ![](assets/Screenshot174.png)
 <br/>
@@ -858,7 +822,6 @@ pragma solidity >=0.5.0 <0.9.0;
      }     
  }
 ```
-
 <br/>
 
 **Demonstration**
@@ -904,10 +867,7 @@ There are four visibility specifiers for functions and state variables
 <br/>
 
 * The function is part of the contract interface and can be called both **internally** (from within the same contract) and **externally** (from other contracts or by EOA accounts)
-<br/>
-
 * A **getter** is automatically created for **public** variables. They can be easily accessed from **dApps**
-<br/>
 
 2. **Private**
 <br/>
@@ -926,20 +886,15 @@ There are four visibility specifiers for functions and state variables
 <br/>
 
 * The function is part of the contract interface, can be accessed only from other contracts or by EOA accounts using transactions. It’s automatically public
-
 * Not-available for state variables
 <br/>
 
 > * Everything that is inside a contract is **visible** to all **external** observers. Making something **private** only prevents other contracts from accessing and modifying the information, but it will still be visible to the whole world outside of the blockchain
 > * Information is not encrypted by default on the Ethereum Blockchain
-> 
-
 > * The visibility specifier is given after the type for state variables and between parameter list and 
 return parameter list for functions
->
 > * External functions are more efficient than public functions in terms of gas consumption
- 
-<br/>
+ <br/>
 
 > **Coding: Visibility Specifiers**
 <br/>
@@ -1013,14 +968,12 @@ contract C{
 <br/>
 
 ![](assets/Screenshot197.png)
-
 <br/>
 
 3. `f3()` is an `internal` function which can can be called from the same contract ( e.g. **contract A**) as well as from derived contract ( e.g. **contract B** ). **Contract B** has been derived from **contrcat A**, same as the **class** is derived from another **class** in **obeject oriented programming**. **Contrcat B** has **inherited** all the functions and variables of **contrct A**. 
 <br/>
 
 ![](assets/Screenshot198.png)
-
 <br/>
 
 4. Difference** between `private` and `internal` function: 
@@ -1175,9 +1128,7 @@ contract A is BaseContract{
 <br/>
 
 Let us consider the instance of contract **A** and notice that it inherits the code of it's base contract like it was copied into contract **A**. The constructor of the base contrcat is implicitly called when contrcat **A** is deployed.
-
 <br/>
-
 
 # Implementing and Running an Initial Coin Offering (ICO)
 <br/>
@@ -1186,24 +1137,20 @@ Let us consider the instance of contract **A** and notice that it inherits the c
 <br/>
 
 1. An **Initial Coin Offering** (ICO) is a type of **crowdfunding** using **cryptocurrencies**
-<br/>
 
 2. An ICO can be a source of capital for startup companies that offers investors some units of a new cryptocurrency or crypto-token in exchange for a well-known and valuable cryptocurrency like Ethereum
-
 
 3. The first ICO (also known as token-sale) was held by Mastercoin in July 2013. The Ethereum project raised money with a token-sale in 2014, as well. It raised 3,700 BTC in the first 12 hours
 
 4. **Who can launch an ICO? Literally anyone!**
 
 5. Before launching an ICO it’s mandatory to verify and obey the laws of the countries your investors are coming from! For example China banned ICOs calling them illegal fundraising. Also note that the vast majority of ICOs have failed.
-
 <br/>
 
 ## Planning the ICO
 <br/>
 
 1. Our **ICO** will be a **Smart Contract** that accepts **ETH** in exchange for our own token named **Maftos (MFT)**
-<br/>
 
 2. The **Maftos** token is a **fully compliant ERC20 token** and will be generated at the ICO time
 
@@ -1230,7 +1177,6 @@ Let us consider the instance of contract **A** and notice that it inherits the c
 13. And we’ll also implement the possibility to **burn** the tokens that were not sold in the ICO
 
 14. After an investment in the ICO the Invest `event` will be emitted
-
 <br/>
 
 ## Defining the ICO State Variables and the Constructor
@@ -1239,38 +1185,32 @@ Let us consider the instance of contract **A** and notice that it inherits the c
 1. First, we declare a contract called `MaftosICO` that derives from the `Maftos` contract.
 
     `contract MaftosICO is Maftos{}`
-
 <br/>
 
 2. Declaring the `admin`, the **account** that deploys the contract
 
     `address public admin;`
-
 <br/>   
 
 3. Declaring the `address` that gets tranferred to the Ethers sent to the `contrcat`. The investors will send Eth to the contract's address, and the **Maftos** will be added to the 
 balance of the investors.
 
     `address payable public deposit;`
-
 <br/>
 
 4. Declaring the `tokenPrice`. The investors will get 1000 MFT for investing 1 ETH
 
     `uint tokenPrice = 0.001 ether;  // 1 ETH = 1000 MFT, 1 CRPT = 0.001`
-
 <br/>
 
-1. Declaring the **hardCap**
+5. Declaring the **hardCap**
 
     `uint public hardCap = 300 ether;`
-
 <br/>
 
 6. Declaring the variable `raisedAmount` that holds the total amount of Ether sent to the ICO
 
     `uint public raisedAmount; // this value will be in wei`
-
 <br/>
 
 7. Declaring the ICO **startDate** and **endDate** where it starts rightaway and ends after one week
@@ -1279,13 +1219,11 @@ balance of the investors.
     uint public saleStart = block.timestamp;
     uint public saleEnd = block.timestamp + 604800; //one week
     ```
-
 <br/>
 
 8. it's a common practice to lock the token for an amount of time. We want the tokens to be transferable only after a time after the ICO ends so that the early investors can't dump the tokens on the market, causin the price to collpase.
 
     `uint public tokenTradeStart = saleEnd + 604800; //transferable in a week after saleEnd`
-
 <br/>
 
 9. Declaring the maximum and minimum investment of an address
@@ -1294,18 +1232,17 @@ balance of the investors.
     uint public maxInvestment = 5 ether;
     uint public minInvestment = 0.1 ether;
     ```
-
 <br/>
 
 10. Declaring a `enum` type called `State`
 
     ` enum State { beforeStart, running, afterEnd, halted} // ICO states `
-
 <br/>
 
 11. Declaring a **state variable** of type `state` that will be called `icoState`
 
     `State public icoState;`
+<br/>    
 
 12. Declaring the **constructor** of the contract that will initialize the deposit address to its **argument** and the **admin** of the contract to the address that deploys the contract. The ICO will start after the deployment
 
@@ -1316,7 +1253,6 @@ balance of the investors.
         icoState = State.beforeStart;
     }
     ```
-
 <br/>
 
 ## The ICO States. ICO Emergency Stop and Restart
@@ -1421,10 +1357,10 @@ This function will be called when somebody sends some ether and receives some **
 <br/>
 
 1. Our **admin** is the first address on **Remix**: **0x5B38Da6a701c568545dCfcB03FcB875f56beddC4**. 
-2. The deposit address is the second address on Remix: **0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2**.
-<br/>
+ 
+3. The deposit address is the second address on Remix: **0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2**.
 
-3. Select the **first address** as admin and fill in the **_DEPOSIT** field with the second account, then deploy the contract as an aadmin from the first address. 
+4. Select the **first address** as admin and fill in the **_DEPOSIT** field with the second account, then deploy the contract as an aadmin from the first address. 
 <br/>
 
 ![](assets/Screenshot207.png)
