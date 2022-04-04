@@ -53,40 +53,40 @@ Solidity is a statically-typed language (variables type should be specified at d
 <br/>
 
 1. **Booleans**
-    In Solidity, `bool` stands for a Boolean value that is either `true` or `false`. You can do logical operations like “or,” “and,” “equal to,” “not equal to,” and so on, to get a Boolean value.
-    <br/>
+In Solidity, `bool` stands for a Boolean value that is either `true` or `false`. You can do logical operations like “or,” “and,” “equal to,” “not equal to,” and so on, to get a Boolean value.
+<br/>
 
-    * Boolean variables: `true` and `false`
-    <br/>
+* Boolean variables: `true` and `false`
+<br/>
 
-    * Initialized by default with `false`
-    <br/>
+* Initialized by default with `false`
+<br/>
 
 2. **Integers**
-    <br/>
+<br/>
 
-    * Signed and Unsigned Integers of various sizes
-    <br/>
+* Signed and Unsigned Integers of various sizes
+<br/>
 
-    * int8 to `int256`, `uint8` to `uint256` in steps of 8
-    <br/>
+* int8 to `int256`, `uint8` to `uint256` in steps of 8
+<br/>
 
-    * `int8` is between -128 and +127, int16 is between -32768 and +32767 and so on
-    <br/>
+* `int8` is between -128 and +127, int16 is between -32768 and +32767 and so on
+<br/>
 
-    * `int` is alias to `int256` and `uint` is an alias to `uint256`
-    <br/>
+* `int` is alias to `int256` and `uint` is an alias to `uint256`
+<br/>
 
-    * By default an int is initialized with zero
-    <br/>
+* By default an int is initialized with zero
+<br/>
 
-    * There is no full support for float/double (fixed point numbers) in Solidity
+* There is no full support for float/double (fixed point numbers) in Solidity
 <br/>
 
 3. **adress**
 <br/>
 
-    While all the previously data types are common to other programming languages, the `address` data type is unique to Solidity. It's a 20-byte value that's used to represent an `address` on the Ethereum network. The address can be a user's Ethereum account or a contract deployed to the network. It has a `.balance()` **member** that can be called to check the balance associated with the account, and a `.transfer()` **member** that can be used to transfer funds to that address. There's also a `.send()` **member**, which is the low-level counterpart of the `.transfer()` **member**. If you use `.send()`, you must check the `return` value of the operation for success or failure, but if you're using .`transfer()`, the `transfer` member handles this for you automatically.
+While all the previously data types are common to other programming languages, the `address` data type is unique to Solidity. It's a 20-byte value that's used to represent an `address` on the Ethereum network. The address can be a user's Ethereum account or a contract deployed to the network. It has a `.balance()` **member** that can be called to check the balance associated with the account, and a `.transfer()` **member** that can be used to transfer funds to that address. There's also a `.send()` **member**, which is the low-level counterpart of the `.transfer()` **member**. If you use `.send()`, you must check the `return` value of the operation for success or failure, but if you're using .`transfer()`, the `transfer` member handles this for you automatically.
 
 <br/>
 
@@ -101,18 +101,18 @@ Solidity is a statically-typed language (variables type should be specified at d
 * **Fixed-Size Arrays**
 <br/>
 
-  * Has a compile-time fixed size.
-  <br/>
+* Has a compile-time fixed size.
+<br/>
 
-  * Can store any type (`int`, `uint`, `address`, `struct` etc)
-  <br/>
+* Can store any type (`int`, `uint`, `address`, `struct` etc)
+<br/>
 
-  * bytes1, bytes2, …, bytes32 store a sequence of bytes.
-  <br/>
+* bytes1, bytes2, …, bytes32 store a sequence of bytes.
+<br/>
 
-  * Has **member** called `length`
+* Has **member** called `length`
  
-  <br/>
+<br/>
 
 <br/>
 
@@ -160,19 +160,19 @@ b3 = 'z'; // => 0x7A
 * **Dynamically-sized arrays**
 <br/>
 
-  * `byte[ ]`
- <br/>
+* `byte[ ]`
+<br/>
   
-  * `byte[ ]` is an alias to `bytes`
+* `byte[ ]` is an alias to `bytes`
 <br/>
 
-  * `string` (UTF-8 encoding)
+* `string` (UTF-8 encoding)
 <br/>
 
-  * `uint[]`, `int[ ]`
+* `uint[]`, `int[ ]`
 <br/>
 
-  * **members**: `length` and `push`
+* **members**: `length` and `push`
 
 > **Coding - Dynamic Arrays**
 
@@ -237,18 +237,18 @@ In Solidity, a string is a type passed by reference. The string data type is use
 
 3. ***Structs and Enums***
 
-    * **Structs**
-      * A struct is a collection of key->value pairs;
-      * A struct introduces a new complex data type, that is composed of elementary data types
-      * Structs are used to represent a singular thing that has properties such as a Car, a Person, a Request and so on and we use mappings to represent a collection of things like a collection of Cars, Requests etc
-      * A struct is saved in storage and if declared inside a function it references storage by default
+* **Structs**
+* A struct is a collection of key->value pairs;
+* A struct introduces a new complex data type, that is composed of elementary data types
+* Structs are used to represent a singular thing that has properties such as a Car, a Person, a Request and so on and we use mappings to represent a collection of things like a collection of Cars, Requests etc
+* A struct is saved in storage and if declared inside a function it references storage by default
 
-    * **Enums**
-      * Enums are used to create user-defined types
-      <br/>
+* **Enums**
+* Enums are used to create user-defined types
+<br/>
 
-      * Enums are explicitly convertible to and from integer
-      * Enums are user defined types that contain human readable names for a set of constants, called members
+* Enums are explicitly convertible to and from integer
+* Enums are user defined types that contain human readable names for a set of constants, called members
 
 <br/>
 
@@ -311,21 +311,17 @@ contract School{
 4. **Mappings**
 <br/>
 
+* It’s a data structure that holds key->value pairs. Its similar to Python Dictionaries, JS objects or Java HashMaps
+<br/>
 
-    * It’s a data structure that holds key->value pairs. Its similar to Python Dictionaries, JS objects or Java HashMaps
-   <br/>
-
-    * All keys must have the same type and all values must have the same type
+* All keys must have the same type and all values must have the same type
    
-    * The keys can not be of types mapping, dynamic array, enum or struct. The values can be of any type including mapping
-    * Mapping is always saved in storage, its’ a state variable. Mappings declared inside
-    functions are also saved in storage
-    * The mappings advantage is that lookup time is constant no matter mapping’s size
-    * A mapping is not iterable, we can’t iterate through a mapping using a for loop
-    * Keys are not saved into the mapping (its a hash table data structure). To get a value
-    from the mapping we provide a key, the key gets passed through a hashing function, that
-    outputs a predetermined index that returns the corresponding value from the mapping
-    * If we want the value of an unexisting key we get a default value
+* The keys can not be of types mapping, dynamic array, enum or struct. The values can be of any type including mapping
+* Mapping is always saved in storage, its’ a state variable. Mappings declared inside functions are also saved in storage
+* The mappings advantage is that lookup time is constant no matter mapping’s size
+* A mapping is not iterable, we can’t iterate through a mapping using a for loop
+* Keys are not saved into the mapping (its a hash table data structure). To get a value from the mapping we provide a key, the key gets passed through a hashing function, that outputs a predetermined index that returns the corresponding value from the mapping
+* If we want the value of an unexisting key we get a default value
 
 <br/>
 
@@ -456,21 +452,20 @@ contract A{
 
 1. **State Variables**
 
-   * Declared at contract level
-   <br/>
+* Declared at contract level
+<br/>
 
-   * Permanently stored in contract storage
-   * Can be set as constants
-   * Expensive to use, they cost gas
-   * Initialized at declaration, using a           constructor or after contract deployment by
-    calling setters
+* Permanently stored in contract storage
+* Can be set as constants
+* Expensive to use, they cost gas
+* Initialized at declaration, using a constructor or after contract deployment by calling setters
 <br/>
 
 2. **Local variables**
 
-   * Declared inside functions
-   * If using the **memory** keyword and are arrays or struct, they are allocated at runtime.
-   * Memory keyword can’t be used at contract level
+* Declared inside functions
+* If using the **memory** keyword and are arrays or struct, they are allocated at runtime.
+* Memory keyword can’t be used at contract level
 <br/>
 
 > **Where does EVM save data?**
@@ -528,14 +523,14 @@ c) **Memory**
 1. The state variable `cities` will not be modified, since the first element of the dynamic array has remain unchanged. So the function ``f_memory`` worked on a copy not, not on the **state** variable.
 <br/>
  
-    ![](assets/Screenshot205.png)
+![](assets/Screenshot205.png)
 
 <br/>
 
 2. In the above code, `s1` is the reference to the same memory location where the **state** variable `cities` was saved. Although, we didn't touch **state** variable `cities` inside the function `f_storage` ( we have only changed `s1` which is defined inside the function `f_storage`), changing `s1` also changes the **state** variable.
 <br/>
 
-    ![](assets/Screenshot205.png)
+![](assets/Screenshot205.png)
 
 <br/>
 
@@ -709,19 +704,19 @@ the transaction or call, as well
 
 * A contract receives ETH in multiple ways:
   
-  * Just by sending ETH to the contract address from another account
-  <br/>
+* Just by sending ETH to the contract address from another account
+<br/>
 
-  * `receive() external payable` - for empty calldata (and any value)
-  <br/>
+* `receive() external payable` - for empty calldata (and any value)
+<br/>
 
-  * `fallback() external payable` - when no other function matches (not even the receive function).
-  <br/>
+* `fallback() external payable` - when no other function matches (not even the receive function).
+<br/>
 
-  * By calling a payable function and sending ETH with that transaction
-  <br/>
+* By calling a payable function and sending ETH with that transaction
+<br/>
 
-  * The ETH balance of the contract is in possession of anyone who can call the `transfer()` built-in function
+* The ETH balance of the contract is in possession of anyone who can call the `transfer()` built-in function
 
 <br/>
 
@@ -792,42 +787,38 @@ contract Deposit{
 <br/>
 
 3. Once the **transaction** is **mined** on **Rinkeby** test network, a confirmation message will pop up from **Metamask**. We can see the details of the transaction on **Remix** as well as on **etherscan**.  
+<br/>
 
-    <br/>
-
-    ![](assets/Screenshot173.png)
+![](assets/Screenshot173.png)
 
 <br/>
 
 4. Now, check the balance by calling the `getBalance()` function and note the balance.
- 
-   <br/>
+ <br/>
 
-   ![](assets/Screenshot174.png)
+![](assets/Screenshot174.png)
 
 <br/>
 
 5. Next, we send **55555** Wei to the contact address. As soon as we call `sendEther()` on Remix, **Metamask** will popup. Confirm the transaction on **Metamask**.
- 
-    <br/>
+ <br/>
 
-    ![](assets/Screenshot175.png)
+![](assets/Screenshot175.png)
 
-    <br/>
+<br/>
 
-    ![](assets/Screenshot176.png)
+![](assets/Screenshot176.png)
 
 <br/>
 
 6. Once the transaction is mined, Metamask will show the confirmation message. Now, call `getBalance` again and check the balance to find it whether it is **55555 Wei** or not.
+<br/>
 
-    <br/>
+![](assets/Screenshot177.png)
 
-    ![](assets/Screenshot177.png)
+<br/>
 
-    <br/>
-
-    ![](assets/Screenshot184.png)
+![](assets/Screenshot184.png)
 
 <br/>
 
@@ -885,47 +876,44 @@ pragma solidity >=0.5.0 <0.9.0;
 
 <br/>
 
-> **Demonstration**
+**Demonstration**
 
 <br/>
 
 1. Let me choose the **first account** of my Metamask Wallet to deploy the contract, which means the **first account** is the **owner** of the **contract** which has the sole authority to access the `transferEther()`.
 <br/>
     
-    <br/>
+![](assets/Screenshot185.png)
 
-    ![](assets/Screenshot185.png)
+<br/>
 
-    <br/>
-
-    ![](assets/Screenshot186.png)
+![](assets/Screenshot186.png)
 
 <br/>
 
 2. Now, let me choose my second account of my Metamask Wallet, which is not the **owner** to access the `transferEther()`. It shows error as can be seen from the following screenshots!
 <br/>
 
-    ![](assets/Screenshot190.png)
+![](assets/Screenshot190.png)
 
-    <br/>
+<br/>
 
-    ![](assets/Screenshot191.png)
+![](assets/Screenshot191.png)
 
 <br/>
 
 3. Finally, I choose the the **first account** of my Metamask Wallet to call `transferEther()`. This time, the transaction gets successfully mined into the **Rinkeby testnet**.
 <br/>
 
-    ![](assets/Screenshot192.png)
+![](assets/Screenshot192.png)
 
-    
-    <br/>
+<br/>
 
-    ![](assets/Screenshot194.png)
+![](assets/Screenshot194.png)
 
-    <br/>
+<br/>
 
-    ![](assets/Screenshot195.png)
+![](assets/Screenshot195.png)
 
 <br/>
 
@@ -937,34 +925,31 @@ There are four visibility specifiers for functions and state variables
 
 1. **Public**
 
-    * The function is part of the contract interface and can be called both **internally** (from within the same contract) and **externally** (from other contracts or by EOA accounts)
+* The function is part of the contract interface and can be called both **internally** (from within the same contract) and **externally** (from other contracts or by EOA accounts)
+<br/>
 
-    <br/>
-
-    * A **getter** is automatically created for **public** variables. They can be easily accessed from **dApps**
+* A **getter** is automatically created for **public** variables. They can be easily accessed from **dApps**
 
 <br/>
 
 2. **Private**
 
-    * **Private** functions and variables are available only in the contract they are defined
-     
-    * This is the **default** for **state variables**, they can be **accessed** only by a **getter** function
+* **Private** functions and variables are available only in the contract they are defined 
+* This is the **default** for **state variables**, they can be **accessed** only by a **getter** function
 
 <br/>
 
 3. **Internal**
 
-    * Functions are accessible only from the contract they are defined in and from derived contracts
+* Functions are accessible only from the contract they are defined in and from derived contracts
 
 <br/>
 
 4. **External**
 
-    * The function is part of the contract interface, can be accessed only from other contracts or by 
-    EOA accounts using transactions. It’s automatically public
+* The function is part of the contract interface, can be accessed only from other contracts or by EOA accounts using transactions. It’s automatically public
 
-    * Not-available for state variables
+* Not-available for state variables
 
 <br/>
 
@@ -1048,21 +1033,21 @@ contract C{
 1. In the above code `y` is an **internal variable** that can be accessed both  in the **current** and **derived** contracts by a **getter** function. Please note that the **getter** function is automatically crreated for the `public` variable `x` but not for the `internal` one. If we want to access the `internal` variable `y` we have t use a **getter** function. `gety ()` is a `public` function and can be accessed can be called from the same contract or from external contracts or **applications** like **Remix**.
 <br/>
 
-    ![](assets/Screenshot196.png)
+![](assets/Screenshot196.png)
 
 <br/>
 
 2. `f1()` is declared to be an `private` function, so **Remix** is unable to call `f1()`. But the `private` function `f1()` can be called by another function like `f2()` in the same contract.
 <br/>
 
-    ![](assets/Screenshot197.png)
+![](assets/Screenshot197.png)
 
 <br/>
 
 3. `f3()` is an `internal` function which can can be called from the same contract ( e.g. **contract A**) as well as from derived contract ( e.g. **contract B** ). **Contract B** has been derived from **contrcat A**, same as the **class** is derived from another **class** in **obeject oriented programming**. **Contrcat B** has **inherited** all the functions and variables of **contrct A**. 
 <br/>
 
-    ![](assets/Screenshot198.png)
+![](assets/Screenshot198.png)
 
 <br/>
 
@@ -1071,29 +1056,29 @@ contract C{
 A `private` function `f2()` can't be accesed from **derived contract B**, whereas an `internal` function `f3()` can be acccesed from **derived contract B**.
 <br/>
 
-    ![](assets/Screenshot199.png)
+![](assets/Screenshot199.png)
 
 <br/>
 
 5. We get an error if we want to access `external` function `f4()` in the same **contract A** inside function `f5()`. Note that we can access `f5()` though on **Remix** as **Remix** is an external application in this specific instance.
 <br/>
 
-    ![](assets/Screenshot200.png)
+![](assets/Screenshot200.png)
 
 <br/>
 
 6. In the above example, **contract C** is an **external contract** which deploys **contract A**. **Contract C** can access `external` function `f4()` but can't access either the `internal` function `f3()` or the `private` function `f2()`.
 <br/>
 
-    ![](assets/Screenshot201.png)
+![](assets/Screenshot201.png)
 
-    <br/>
+<br/>
 
-    ![](assets/Screenshot202.png)
+![](assets/Screenshot202.png)
 
-    <br/>
+<br/>
 
-    ![](assets/Screenshot203.png)
+![](assets/Screenshot203.png)
 
 <br/>
 
@@ -1136,4 +1121,93 @@ contract Property{
 **Answer: Only from the current comntract** 
 
 <br/>
+
+# Implementing an ERC 20 Token
+
+## Contract Inheritance in Solidity 
+
+<br/>
+
+1. A contract acts like a **class**. A contract can **inherit** from another **contract** known as the **base contract** to share a common interface
+
+<br/>
+
+2. The general inheritance system is very similar to Python’s one, especially concerning **multiple inheritance**
+
+3. Solidity supports multiple inheritance including polymorphism. Multiple inheritance introduces problems like the “diamond problem” and should be avoided
+
+4. When a contract inherits from multiple contracts, only a single contract is created on the blockchain, and the code from all the base contracts is copied into the created contract
+
+5. All function calls are virtual, which means that the most derived function is called, except when the contract name is explicitly given
+
+6. When deploying a derived contract the base contract’s constructor is automatically called
+
+7. `is` keyword is used when declaring a new derived contract
+
+<br/>
+
+## Abstract Contracts
+
+<br/>
+
+1. An `abstract` contract is the one with at least one function that is not implemented and is declared using the `abstract` keywork
+
+2. You can mark a contract as being abstract even though all functions are implemented
+
+3. **An abstract contract cannot be deployed**
+
+<br/>
+
+## Interfaces
+
+<br/>
+
+1. **Interfaces** are similar to **abstract** contracts, but they **cannot have any functions implemented**
+
+2. Interfaces can be inherited
+
+3. Interfaces have further restrictions
+
+    * They cannot inherit from other contracts, but they can inherit from other interfaces
+    * All declared functions must be external
+    * They cannot declare a constructor
+    * They cannot declare a constructor
+     <br/>
+     
+4. An **interface** is created using the `interface` keyword instead of contract; 
+
+
+
+
+<br/>
+
+ ```
+ //SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0 ;
+
+contract BaseContrcat{
+    int public x;
+    address public owner;
+
+    constructor(){
+        x = 5 ;
+        owner = msg.sender ;
+    }
+
+    function setX(int _x) public{
+        x = _x;
+    }
+}
+
+contract A is BaseContract{
+    int public y = 3;
+}
+ ```
+<br/>
+
+Let us consider the instance of contract **A** and notice that it inherits the code of it's base contract like it was copied into contract **A**. The constructor of the base contrcat is implicitly called when contrcat **A** is deployed.
+
+<br/>
+
 
