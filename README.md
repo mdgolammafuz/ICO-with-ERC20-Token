@@ -864,27 +864,20 @@ There are four visibility specifiers for functions and state variables
 <br/>
 
 1. **Public**
-<br/>
-
 * The function is part of the contract interface and can be called both **internally** (from within the same contract) and **externally** (from other contracts or by EOA accounts)
 * A **getter** is automatically created for **public** variables. They can be easily accessed from **dApps**
-
-2. **Private**
 <br/>
 
+2. **Private**
 * **Private** functions and variables are available only in the contract they are defined
 * This is the **default** for **state variables**, they can be **accessed** only by a **getter** function
 <br/>
 
 3. **Internal**
-<br/>
-
 * Functions are accessible only from the contract they are defined in and from derived contracts
 <br/>
 
 4. **External**
-<br/>
-
 * The function is part of the contract interface, can be accessed only from other contracts or by EOA accounts using transactions. It’s automatically public
 * Not-available for state variables
 <br/>
@@ -894,7 +887,7 @@ There are four visibility specifiers for functions and state variables
 > * The visibility specifier is given after the type for state variables and between parameter list and 
 return parameter list for functions
 > * External functions are more efficient than public functions in terms of gas consumption
- <br/>
+<br/>
 
 > **Coding: Visibility Specifiers**
 <br/>
@@ -1055,7 +1048,6 @@ contract Property{
 <br/>
 
 1. A contract acts like a **class**. A contract can **inherit** from another **contract** known as the **base contract** to share a common interface
-<br/>
 
 2. The general inheritance system is very similar to Python’s one, especially concerning **multiple inheritance**
 
@@ -1068,26 +1060,22 @@ contract Property{
 6. When deploying a derived contract the base contract’s constructor is automatically called
 
 7. We declare a new derived contract using the `is` keyword
-
 <br/>
 
 ## Abstract Contracts
 <br/>
 
 1. An **abstract** contract is the one with at least one function that is not implemented and is declared using the `abstract` keywork
-<br/> 
 
 3. You can mark a contract as being abstract even though all functions are implemented
 
 4. **An abstract contract cannot be deployed**
-
 <br/>
 
 ## Interfaces
 <br/>
 
 1. **Interfaces** are similar to **abstract** contracts, but they **cannot have any functions implemented**
-<br/>
 
 2. Interfaces can be inherited
 
@@ -1097,7 +1085,6 @@ contract Property{
     * All declared functions must be external
     * They cannot declare a constructor
     * They cannot declare a constructor
-     <br/>
      
 4. An **interface** is created using the `interface` keyword instead of contract; 
 <br/>
@@ -1128,6 +1115,7 @@ contract A is BaseContract{
 <br/>
 
 Let us consider the instance of contract **A** and notice that it inherits the code of it's base contract like it was copied into contract **A**. The constructor of the base contrcat is implicitly called when contrcat **A** is deployed.
+
 <br/>
 
 # Implementing and Running an Initial Coin Offering (ICO)
@@ -1320,9 +1308,7 @@ This function will be called when somebody sends some ether and receives some **
 <br/>
 
 ```
-
     event Invest(address investor, uint value, uint tokens);
-    
     
     // function called when sending eth to the contract
     function invest() payable public returns(bool){ 
@@ -1384,3 +1370,11 @@ This function will be called when somebody sends some ether and receives some **
 ![](assets/Screenshot214.png)
 <br/>
 
+5. Now, let's check the balance of **investor** (**0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db**) and the **founder** (**0x5B38Da6a701c568545dCfcB03FcB875f56beddC4**), when the investor sends **1 ETH** to the contract so that **1000** tokens are trnasferred from the founder's balance to the investor's balance.
+<br/>
+
+![](assets/Screenshot215.png)
+<br/>
+
+![](assets/Screenshot216.png)
+<br/>
