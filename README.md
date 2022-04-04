@@ -1378,3 +1378,102 @@ This function will be called when somebody sends some ether and receives some **
 
 ![](assets/Screenshot216.png)
 <br/>
+
+## Locking Up the Tokens
+<br/>
+
+When people hurry to sell their tokens, the price will drop. It might be good idea to lock up the tokens for a period of time after the ICO ends, thus, making sure that the tokens should not be transferrable right away. To lock up the tokens we will `override` the two functions: `tranfer()` and `transferFrom` in the ICO contract and add the token locking feature.
+
+```
+    function transfer(address to, uint tokens) public override returns (bool success){
+        require(block.timestamp > tokenTradeStart); // the token will be transferable only after tokenTradeStart
+        
+        // calling the transfer function of the base contract
+        super.transfer(to, tokens);  // same as Maftos.transfer(to, tokens);
+        return true;
+    }
+    
+    
+    function transferFrom(address from, address to, uint tokens) public override returns (bool success){
+        require(block.timestamp > tokenTradeStart); // the token will be transferable only after tokenTradeStart
+       
+        Maftos.transferFrom(from, to, tokens);  // same as super.transferFrom(to, tokens);
+        return true;
+     
+    }
+```
+<br/>
+
+## Burning the Tokens
+<br/>
+
+Another good practice is to burn the unsold tokens. The ICO Hardcap is 300 ETH which means we accept a maximum investment of 300 ETH and sell tokens in value of 300 ETH. Generally burning tokens will increase the token's price. 
+
+```
+// burning unsold tokens
+    function burn() public returns(bool){
+        icoState = getCurrentState();
+        require(icoState == State.afterEnd);
+        balances[founder] = 0;
+        return true;
+        
+    }
+```
+<br/>
+
+## ICO and ERC20 Token Deployment on Rinkeby Testnet
+<br/>
+
+1. In this demonstration, our founder address is my first **Metamask** address: **0x69F48dd0298966fb6215fe87F60c312D47507cD8**. The deposit address is **0x8eAa9856283BEc74Ef7624280822c411fc8412d5**. We choose **Injected Web3** on **Remix** and deploy the contract from the first address of my **Metamask** account. 
+ <br/>
+
+![](assets/Screenshot217.png)
+<br/>
+
+![](assets/Screenshot218.png)
+<br/>
+
+![](assets/Screenshot220.png)
+<br/>
+
+![](assets/Screenshot221.png)
+<br/>
+
+![](assets/Screenshot222.png)
+
+<br/>
+
+2. Now, we will invest **0.1001 ETH** from my **second** Metamask wallet address **0x76957C33B4dB4C9192f11b6c4bB49302070E4987** to the **contract's** address **0x1b9233a0a0370c73fc1ac41e688a9ace5c23242a** to earn **100 MFT Tokens**. We have to import our **MFT Tokens** from my second Metamask Wallet addess **0x76957C33B4dB4C9192f11b6c4bB49302070E4987**.
+<br/>
+
+![](assets/Screenshot225.png)
+
+<br/>
+
+![](assets/Screenshot226.png)
+
+<br/>
+
+![](assets/Screenshot231.png)
+
+<br/>
+
+![](assets/Screenshot234.png)
+
+<br/>
+
+![](assets/Screenshot233.png)
+
+<br/>
+
+1. Finally, let us confirm the balance of the tokens of the **investor** (should be **100 MFT Tokens**), which is **0x76957C33B4dB4C9192f11b6c4bB49302070E4987**, and the balance of the **founder** (should be **(total supply - 100)**), which is 
+**0x69F48dd0298966fb6215fe87F60c312D47507cD8** in our case, on **Remix**.
+<br/>
+
+![](assets/Screenshot234.png)
+
+<br/>
+
+![](assets/Screenshot235.png)
+
+<br/>

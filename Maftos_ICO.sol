@@ -189,7 +189,7 @@ contract MaftosICO is Maftos{
         require(block.timestamp > tokenTradeStart); // the token will be transferable only after tokenTradeStart
         
         // calling the transfer function of the base contract
-        super.transfer(to, tokens);  // same as Cryptos.transfer(to, tokens);
+        super.transfer(to, tokens);  // same as Maftos.transfer(to, tokens);
         return true;
     }
     
