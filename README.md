@@ -678,23 +678,20 @@ the transaction or call, as well
 ## Contract Address
 <br/>
 
-  1. Any contract has its own unique address that is generated at deployment
+1. Any contract has its own unique address that is generated at deployment
 <br/>
 
-  1. The contract address is generated based on the address of the account that deploys the contract and the no. of transactions of that account (nonce . It can’t be calculated in advance.
+2. The contract address is generated based on the address of the account that deploys the contract and the no. of transactions of that account (nonce . It can’t be calculated in advance.
 <br/>
 
-1. Address is a variable type and has the following members:
+3. Address is a variable type and has the following members:
    
     * `balance`
     <br/>
 
     * If the address is declared payable it has two additional members:
-        * `transfer()`: should be used in most cases as it's the safest way to send ether
-        <br/>
-
-        * `send()`: is like a low-level transfer(). If execution fails the contract will not stop and send() returns false
-       
+    * `transfer()`: should be used in most cases as it's the safest way to send ether
+    * `send()`: is like a low-level transfer(). If execution fails the contract will not stop and send() returns false
     * `call()`, `delegatecall()`, `staticcall()`
 
 ## Payable functions and contract balance
@@ -721,12 +718,10 @@ the transaction or call, as well
 <br/>
 
 > **Demonstration: Reiceiving Ether**
-
 <br/>
 
 1. Let us demonstrate how to send ether to the contract's address using **Metamask** and **Remix** on **Rinkeby** **testnet** using the following **solidity** code given as a screenshot from the **Visual Studio Code Editor**
- 
-<br/>
+ <br/>
 
 ```
 //SPDX-License-Identifier: GPL-3.0
@@ -735,36 +730,35 @@ pragma solidity >=0.6.0 <0.9.0;
  
 contract Deposit{
     
-    // either receive() or fallback() is mandatory for the contract to receive ETH by 
-    // sending ETH to the contract's address
+// either receive() or fallback() is mandatory for the contract to receive ETH by 
+// sending ETH to the contract's address
     
-    // declaring the receive() function that is executed when sending ETH to the contract address
-    // it was introduced in Solidity 0.6 and a contract can have only one receive function, 
-    // declared with this syntax (without the function keyword and without arguments). 
-    receive() external payable{
-    }
+// declaring the receive() function that is executed when sending ETH to the contract address
+// it was introduced in Solidity 0.6 and a contract can have only one receive function, 
+// declared with this syntax (without the function keyword and without arguments). 
+receive() external payable{
+}
    
  
-    /* declaring a fallback payable function that is called when msg.data is not empty or when no other function matches */
-    fallback() external payable {
-    }
+/* declaring a fallback payable function that is called when msg.data is not empty or when no other function matches */
+fallback() external payable {
+}
     
     
-    // ether can be send and received by the contract in the trasaction that calls this function as well
-    function sendEther() public payable{
+// ether can be send and received by the contract in the trasaction that calls thisfunction as well
+function sendEther() public payable{
         
-    }
+}
  
    
-    // returning the balance of the contract. 
-    function getBalance() public view returns (uint) {
-        // this is the current contract, explicitly convertible to address, 
-        // and balance is a member of any variable of type address. 
-        return address(this).balance;
-    }
+// returning the balance of the contract. 
+function getBalance() public view returns (uint) {
+// this is the current contract, explicitly convertible to address, 
+// and balance is a member of any variable of type address. 
+return address(this).balance;
+}
 }
 ```
-
 <br/>
 
 ![Solidity Code](assets/Screenshot182.png)
@@ -775,60 +769,51 @@ contract Deposit{
 <br/>
 
 ![](assets/Screenshot170.png)
-
 <br/>
 
-![](Screenshot171.png)
-
+![](assets/Screenshot171.png)
 <br/>
 
 ![](assets/Screenshot172.png)
-
 <br/>
 
-3. Once the **transaction** is **mined** on **Rinkeby** test network, a confirmation message will pop up from **Metamask**. We can see the details of the transaction on **Remix** as well as on **etherscan**.  
+1. Once the **transaction** is **mined** on **Rinkeby** test network, a confirmation message will pop up from **Metamask**. We can see the details of the transaction on **Remix** as well as on **etherscan**.  
 <br/>
 
 ![](assets/Screenshot173.png)
-
 <br/>
 
 4. Now, check the balance by calling the `getBalance()` function and note the balance.
  <br/>
 
 ![](assets/Screenshot174.png)
-
 <br/>
 
 5. Next, we send **55555** Wei to the contact address. As soon as we call `sendEther()` on Remix, **Metamask** will popup. Confirm the transaction on **Metamask**.
- <br/>
+<br/>
 
 ![](assets/Screenshot175.png)
-
 <br/>
 
 ![](assets/Screenshot176.png)
-
 <br/>
 
 6. Once the transaction is mined, Metamask will show the confirmation message. Now, call `getBalance` again and check the balance to find it whether it is **55555 Wei** or not.
 <br/>
 
 ![](assets/Screenshot177.png)
-
 <br/>
 
 ![](assets/Screenshot184.png)
-
 <br/>
 
 ## Securing the Contract's Balance against unauthorized access
+<br/>
 
 One approach is to restrict the access of `transferEther()` to the account which deploys the contract to secure the Contract's balance against the unauthorized access. 
 <br/>
 
 > **Coding**
-
 <br/>
 
 ```
@@ -877,44 +862,36 @@ pragma solidity >=0.5.0 <0.9.0;
 <br/>
 
 **Demonstration**
-
 <br/>
 
 1. Let me choose the **first account** of my Metamask Wallet to deploy the contract, which means the **first account** is the **owner** of the **contract** which has the sole authority to access the `transferEther()`.
 <br/>
     
 ![](assets/Screenshot185.png)
-
 <br/>
 
 ![](assets/Screenshot186.png)
-
 <br/>
 
 2. Now, let me choose my second account of my Metamask Wallet, which is not the **owner** to access the `transferEther()`. It shows error as can be seen from the following screenshots!
 <br/>
 
 ![](assets/Screenshot190.png)
-
 <br/>
 
 ![](assets/Screenshot191.png)
-
 <br/>
 
 3. Finally, I choose the the **first account** of my Metamask Wallet to call `transferEther()`. This time, the transaction gets successfully mined into the **Rinkeby testnet**.
 <br/>
 
 ![](assets/Screenshot192.png)
-
 <br/>
 
 ![](assets/Screenshot194.png)
-
 <br/>
 
 ![](assets/Screenshot195.png)
-
 <br/>
 
 ## Variables and Functions Visibility: Private, Public, Internal, External
@@ -924,37 +901,36 @@ There are four visibility specifiers for functions and state variables
 <br/>
 
 1. **Public**
+<br/>
 
 * The function is part of the contract interface and can be called both **internally** (from within the same contract) and **externally** (from other contracts or by EOA accounts)
 <br/>
 
 * A **getter** is automatically created for **public** variables. They can be easily accessed from **dApps**
-
 <br/>
 
 2. **Private**
+<br/>
 
-* **Private** functions and variables are available only in the contract they are defined 
+* **Private** functions and variables are available only in the contract they are defined
 * This is the **default** for **state variables**, they can be **accessed** only by a **getter** function
-
 <br/>
 
 3. **Internal**
+<br/>
 
 * Functions are accessible only from the contract they are defined in and from derived contracts
-
 <br/>
 
 4. **External**
+<br/>
 
 * The function is part of the contract interface, can be accessed only from other contracts or by EOA accounts using transactions. It’s automatically public
 
 * Not-available for state variables
-
 <br/>
 
-> * Everything that is inside a contract is visible to all external observers. Making something private only prevents other contracts from accessing and modifying the information, but it will still be visible to the whole world outside of the blockchain
-> 
+> * Everything that is inside a contract is **visible** to all **external** observers. Making something **private** only prevents other contracts from accessing and modifying the information, but it will still be visible to the whole world outside of the blockchain
 > * Information is not encrypted by default on the Ethereum Blockchain
 > 
 
@@ -962,11 +938,10 @@ There are four visibility specifiers for functions and state variables
 return parameter list for functions
 >
 > * External functions are more efficient than public functions in terms of gas consumption
-
+ 
 <br/>
 
 > **Coding: Visibility Specifiers**
-
 <br/>
 
 ```
@@ -1023,18 +998,15 @@ contract C{
 }
 
 ```
-
 <br/>
 
 > **Demonstration**
-
 <br/>
 
 1. In the above code `y` is an **internal variable** that can be accessed both  in the **current** and **derived** contracts by a **getter** function. Please note that the **getter** function is automatically crreated for the `public` variable `x` but not for the `internal` one. If we want to access the `internal` variable `y` we have t use a **getter** function. `gety ()` is a `public` function and can be accessed can be called from the same contract or from external contracts or **applications** like **Remix**.
 <br/>
 
 ![](assets/Screenshot196.png)
-
 <br/>
 
 2. `f1()` is declared to be an `private` function, so **Remix** is unable to call `f1()`. But the `private` function `f1()` can be called by another function like `f2()` in the same contract.
@@ -1053,18 +1025,17 @@ contract C{
 
 4. Difference** between `private` and `internal` function: 
 <br/>
+
 A `private` function `f2()` can't be accesed from **derived contract B**, whereas an `internal` function `f3()` can be acccesed from **derived contract B**.
 <br/>
 
 ![](assets/Screenshot199.png)
-
 <br/>
 
 5. We get an error if we want to access `external` function `f4()` in the same **contract A** inside function `f5()`. Note that we can access `f5()` though on **Remix** as **Remix** is an external application in this specific instance.
 <br/>
 
 ![](assets/Screenshot200.png)
-
 <br/>
 
 6. In the above example, **contract C** is an **external contract** which deploys **contract A**. **Contract C** can access `external` function `f4()` but can't access either the `internal` function `f3()` or the `private` function `f2()`.
@@ -1085,7 +1056,8 @@ A `private` function `f2()` can't be accesed from **derived contract B**, wherea
 > **Knowledge check: Visibility Specifier**
 
 > 1. What visibility specifier has the `price` variable?
-> 
+<br/>
+
 ```
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.5.0 <0.9.0;
@@ -1104,6 +1076,7 @@ contract Property{
 <br/>
 
 > 2. Where can the `setPrice()` function be called from?
+<br/>
 
 ```
 // SPDX-License-Identifier: GPL-3.0
@@ -1129,7 +1102,6 @@ contract Property{
 <br/>
 
 1. A contract acts like a **class**. A contract can **inherit** from another **contract** known as the **base contract** to share a common interface
-
 <br/>
 
 2. The general inheritance system is very similar to Python’s one, especially concerning **multiple inheritance**
@@ -1142,27 +1114,27 @@ contract Property{
 
 6. When deploying a derived contract the base contract’s constructor is automatically called
 
-7. `is` keyword is used when declaring a new derived contract
+7. We declare a new derived contract using the `is` keyword
 
 <br/>
 
 ## Abstract Contracts
-
 <br/>
 
-1. An `abstract` contract is the one with at least one function that is not implemented and is declared using the `abstract` keywork
+1. An **abstract** contract is the one with at least one function that is not implemented and is declared using the `abstract` keywork
+<br/> 
 
-2. You can mark a contract as being abstract even though all functions are implemented
+3. You can mark a contract as being abstract even though all functions are implemented
 
-3. **An abstract contract cannot be deployed**
+4. **An abstract contract cannot be deployed**
 
 <br/>
 
 ## Interfaces
-
 <br/>
 
 1. **Interfaces** are similar to **abstract** contracts, but they **cannot have any functions implemented**
+<br/>
 
 2. Interfaces can be inherited
 
@@ -1175,10 +1147,6 @@ contract Property{
      <br/>
      
 4. An **interface** is created using the `interface` keyword instead of contract; 
-
-
-
-
 <br/>
 
  ```
@@ -1210,4 +1178,273 @@ Let us consider the instance of contract **A** and notice that it inherits the c
 
 <br/>
 
+
+# Implementing and Running an Initial Coin Offering (ICO)
+<br/>
+
+## What is an ICO?
+<br/>
+
+1. An **Initial Coin Offering** (ICO) is a type of **crowdfunding** using **cryptocurrencies**
+<br/>
+
+2. An ICO can be a source of capital for startup companies that offers investors some units of a new cryptocurrency or crypto-token in exchange for a well-known and valuable cryptocurrency like Ethereum
+
+
+3. The first ICO (also known as token-sale) was held by Mastercoin in July 2013. The Ethereum project raised money with a token-sale in 2014, as well. It raised 3,700 BTC in the first 12 hours
+
+4. **Who can launch an ICO? Literally anyone!**
+
+5. Before launching an ICO it’s mandatory to verify and obey the laws of the countries your investors are coming from! For example China banned ICOs calling them illegal fundraising. Also note that the vast majority of ICOs have failed.
+
+<br/>
+
+## Planning the ICO
+<br/>
+
+1. Our **ICO** will be a **Smart Contract** that accepts **ETH** in exchange for our own token named **Maftos (MFT)**
+<br/>
+
+2. The **Maftos** token is a **fully compliant ERC20 token** and will be generated at the ICO time
+
+3. Investors will send **ETH** to the **ICO contract’s address** and in return, they’ll get an amount of **Maftos**
+
+4. **There will be a deposit address (EOA account) that automatically receives the ETH sent to the ICO contract** (**EOA** stands for **Externally Owned Account**)
+
+5. MFT token price in wei is: 1CRPT = 0.001Eth = 10**15 wei, 1Eth = 1000 MFT)
+
+6. The **minimum investment** is 0.01 ETH and the maximum investment is 5 ETH
+
+7. The ICO **Hardcap** is 300 ETH
+
+8. The ICO will have an admin that specifies when the ICO starts and ends
+
+9. The ICO ends when the Hardcap or the end time is reached (whichever comes first)
+
+10. The **MFT** token will be tradable only after a specific time set by the admin
+
+11. **In case of an emergency the admin could stop the ICO and could also change the deposit address in case it gets compromised**
+
+12. The ICO can be in one of the following states: `beforeStart`, `running`, `afterEnd`, `halted`
+
+13. And we’ll also implement the possibility to **burn** the tokens that were not sold in the ICO
+
+14. After an investment in the ICO the Invest `event` will be emitted
+
+<br/>
+
+## Defining the ICO State Variables and the Constructor
+<br/>
+
+1. First, we declare a contract called `MaftosICO` that derives from the `Maftos` contract.
+
+    `contract MaftosICO is Maftos{}`
+
+<br/>
+
+2. Declaring the `admin`, the **account** that deploys the contract
+
+    `address public admin;`
+
+<br/>   
+
+3. Declaring the `address` that gets tranferred to the Ethers sent to the `contrcat`. The investors will send Eth to the contract's address, and the **Maftos** will be added to the 
+balance of the investors.
+
+    `address payable public deposit;`
+
+<br/>
+
+4. Declaring the `tokenPrice`. The investors will get 1000 MFT for investing 1 ETH
+
+    `uint tokenPrice = 0.001 ether;  // 1 ETH = 1000 MFT, 1 CRPT = 0.001`
+
+<br/>
+
+1. Declaring the **hardCap**
+
+    `uint public hardCap = 300 ether;`
+
+<br/>
+
+6. Declaring the variable `raisedAmount` that holds the total amount of Ether sent to the ICO
+
+    `uint public raisedAmount; // this value will be in wei`
+
+<br/>
+
+7. Declaring the ICO **startDate** and **endDate** where it starts rightaway and ends after one week
+
+    ```
+    uint public saleStart = block.timestamp;
+    uint public saleEnd = block.timestamp + 604800; //one week
+    ```
+
+<br/>
+
+8. it's a common practice to lock the token for an amount of time. We want the tokens to be transferable only after a time after the ICO ends so that the early investors can't dump the tokens on the market, causin the price to collpase.
+
+    `uint public tokenTradeStart = saleEnd + 604800; //transferable in a week after saleEnd`
+
+<br/>
+
+9. Declaring the maximum and minimum investment of an address
+
+    ```
+    uint public maxInvestment = 5 ether;
+    uint public minInvestment = 0.1 ether;
+    ```
+
+<br/>
+
+10. Declaring a `enum` type called `State`
+
+    ` enum State { beforeStart, running, afterEnd, halted} // ICO states `
+
+<br/>
+
+11. Declaring a **state variable** of type `state` that will be called `icoState`
+
+    `State public icoState;`
+
+12. Declaring the **constructor** of the contract that will initialize the deposit address to its **argument** and the **admin** of the contract to the address that deploys the contract. The ICO will start after the deployment
+
+    ```
+    constructor(address payable _deposit){
+        deposit = _deposit; 
+        admin = msg.sender; 
+        icoState = State.beforeStart;
+    }
+    ```
+
+<br/>
+
+## The ICO States. ICO Emergency Stop and Restart
+<br/>
+
+1. One of the requirements of our ICO is that the admin can stop the ICo in case of an emergency. For example, if the deposit address gets compromised, or a security vulnerability is found in the contract. For that, let us declare a **function modifer** called `onlyAdmin` that will be applied to the functions that should be called only by he admin.
+
+    ```
+    modifier onlyAdmin(){
+        require(msg.sender == admin);
+        _;
+    }
+    ```
+<br/>
+
+2. Declaring the function called `halt()` that can be called only by the admin to stop the ICo in case an emergency
+
+    ```
+    // emergency stop
+    function halt() public onlyAdmin{
+        icoState = State.halted;
+    }
+    ```
+<br/>
+
+3. Resuming the ICO after the problem is solved by the ICO
+
+    ```
+    function resume() public onlyAdmin{
+        icoState = State.running;
+    }
+    ```
+<br/>
+
+4. To change the deposit address by the admin when it gets compromised
+
+    ```
+    function changeDepositAddress(address payable newDeposit) public onlyAdmin{
+        deposit = newDeposit;
+    }
+    ```
+<br/>
+
+5. Creating a function that returns the state of the ICO
+
+```
+function getCurrentState() public view returns(State){
+        if(icoState == State.halted){
+            return State.halted;
+        }else if(block.timestamp < saleStart){
+            return State.beforeStart;
+        }else if(block.timestamp >= saleStart && block.timestamp <= saleEnd){
+            return State.running;
+        }else{
+            return State.afterEnd;
+        }
+    }
+```
+<br/>
+
+## Implementing the invest function
+<br/>
+
+This function will be called when somebody sends some ether and receives some **Maftos** in return. 
+<br/>
+
+```
+
+    event Invest(address investor, uint value, uint tokens);
+    
+    
+    // function called when sending eth to the contract
+    function invest() payable public returns(bool){ 
+        icoState = getCurrentState();
+        require(icoState == State.running);
+        require(msg.value >= minInvestment && msg.value <= maxInvestment);
+        
+        raisedAmount += msg.value;
+        require(raisedAmount <= hardCap);
+        
+        uint tokens = msg.value / tokenPrice;
+
+        // adding tokens to the inverstor's balance from the founder's balance
+        balances[msg.sender] += tokens;
+        balances[founder] -= tokens; 
+        deposit.transfer(msg.value); // transfering the value sent to the ICO to the deposit address
+        
+        emit Invest(msg.sender, msg.value, tokens);
+        
+        return true;
+    }
+   
+   
+   // this function is called automatically when someone sends ETH to the contract's address
+   receive () payable external{
+        invest();
+    }
+```
+<br/>
+
+## Testing the ICO on Remix JavaScript VM
+<br/>
+
+1. Our **admin** is the first address on **Remix**: **0x5B38Da6a701c568545dCfcB03FcB875f56beddC4**. 
+2. The deposit address is the second address on Remix: **0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2**.
+<br/>
+
+3. Select the **first address** as admin and fill in the **_DEPOSIT** field with the second account, then deploy the contract as an aadmin from the first address. 
+<br/>
+
+![](assets/Screenshot207.png)
+<br/>
+
+![](assets/Screenshot208.png)
+<br/>
+
+4. Now, select the **third** address, for example and try to invest **300 wei** which is less than the minimum investment limit. This will give an error. Let's select the same account and send **1 ETH** to the deposit address. This time the transaction will be mined successfully.
+<br/>
+
+![](assets/Screenshot209.png)
+<br/>
+
+![](assets/Screenshot210.png)
+<br/>
+
+![](assets/Screenshot212.png)
+<br/>
+
+![](assets/Screenshot214.png)
+<br/>
 
