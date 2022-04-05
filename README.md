@@ -108,7 +108,7 @@ While all the previously data types are common to other programming languages, t
 
 > **Coding: Fixed-Size Arrays**
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.5.0 <0.9.0;
@@ -161,7 +161,7 @@ b3 = 'z'; // => 0x7A
 
 > **Coding - Dynamic Arrays**
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.5.0 <0.9.0;
@@ -237,10 +237,13 @@ In Solidity, a string is a type passed by reference. The string data type is use
   * Enums are explicitly convertible to and from integer
  
   * Enums are user defined types that contain human readable names for a set of constants, called members
+   
+<br/>
 
 > **Struct and Enums Coding**
-<br/>
-```
+
+
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.5.0 <0.9.0;
@@ -292,7 +295,7 @@ contract School{
 ```
 <br/>
 
-4. ***Mappings***
+1. ***Mappings***
 
    * It’s a data structure that holds key->value pairs. Its similar to Python Dictionaries, JS objects or Java HashMaps
  
@@ -312,7 +315,7 @@ contract School{
 
 > **Coding - Mappings**
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.5.0 <0.9.0;
@@ -329,6 +332,7 @@ contract Auction{
         bids[msg.sender] = msg.value;
     }
 }
+
 ```
 <br/>
 
@@ -354,7 +358,7 @@ mapping(address => uint) public bids;
 > 3. Consider the following variable declarations:
 <br/>
 
-```
+```javascript
 bytes public b1 = 'abc';
 string public s1 = 'abc';
  ```
@@ -368,12 +372,14 @@ string public s1 = 'abc';
 > 4. Consider the following struct type declaration:
 <br/>
 
-```
+```javascript
+
 struct Auction{
     uint value;
     string description;
     address addr;
 }
+
 ```
 <br/>
 
@@ -390,7 +396,7 @@ How can you declare a state variable of type Auction?
 
 <br/>
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.5.0 <0.9.0;
@@ -415,6 +421,7 @@ contract A{
     }
     
 }
+
 ```
 <br/>
 
@@ -479,7 +486,7 @@ c) **Memory**
 
 * ***Demonstration: `memory` and `storage`***
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
 
     pragma solidity >= 0.5.0. < 0.9.0 ;
@@ -520,7 +527,7 @@ c) **Memory**
 
 > 1. Consider the following contract. What will be the value of the crypto dynamic array after calling `myFunction()?`
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.5.0 <0.9.0;
@@ -543,7 +550,7 @@ contract A{
 
 > 2. Consider the following contract. If you call `myFunction()` will the Blockchain state be altered?
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.5.0 <0.9.0;
@@ -569,7 +576,7 @@ contract A{
 This brings us to a really interesting point: something called variable scope. Take a look at this. We have a variable called `saySomething` with a value of `"hello"`. Inside this `doStuff` function, we have another variable called saySomething with a value of `"goodbye"`. So, while we're inside this function, what do you think the value of `saySomething` is? If you said `goodbye`, you're right, the saySomething variable inside the function is said to be shadowing the same variable name outside the function, and as you can see that's a bad thing. When this function exits, the value of `saySomething` is now back to the original value of `"hello"`; that's because the variables declared inside this function only exist within the function. Once the function exits, those variables are gone. on exits, the value of `saySomething` is now back to the original value of `"hello"`; that's because the variables declared inside this function only exist within the function. Once the function exits, those variables are gone. Outside of the doStuff func there's not even a thing called `saySomethingElse` that can be accessed. That's an important point to remember when you're building your functions: what variables are needed inside the function and what data is needed from the function after it exits:
 <br/>
 
-```
+```javascript
 string saySomething = "hello";
 function doStuff() internal {
          string saySomething = "goodbye";
@@ -584,7 +591,7 @@ function doStuff() internal {
 > **Coding - Variables and Functions with Basic Structure of Smart Contracts: Setters, Getters and the Constructor**
  <br/>
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.5.0 <0.9.0;
@@ -689,7 +696,7 @@ the transaction or call, as well
 1. Let us demonstrate how to send ether to the contract's address using **Metamask** and **Remix** on **Rinkeby** **testnet** using the following **solidity** code given as a screenshot from the **Visual Studio Code Editor**
 <br/>
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.6.0 <0.9.0;
@@ -781,7 +788,7 @@ One approach is to restrict the access of `transferEther()` to the account which
 > **Coding**
 <br/>
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.5.0 <0.9.0;
@@ -904,7 +911,7 @@ There are ***four*** visibility specifiers for functions and state variables
 
 > **Coding: Visibility Specifiers**
 
-```
+```javascript
 //SPDX-License-Identifier: GPL-3.0
  
 pragma solidity >=0.5.0 <0.9.0;
@@ -1018,7 +1025,7 @@ A `private` function `f2()` can't be accesed from **derived contract B**, wherea
 > 1. What visibility specifier has the `price` variable?
 <br/>
 
-```
+```javascript
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.5.0 <0.9.0;
  
@@ -1028,6 +1035,7 @@ contract Property{
         price = _price;
     }
 }
+
 ```
 <br/>
 
@@ -1038,7 +1046,7 @@ contract Property{
 > 2. Where can the `setPrice()` function be called from?
 <br/>
 
-```
+```javascript
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.5.0 <0.9.0;
  
@@ -1048,6 +1056,7 @@ contract Property{
         price = _price;
     }
 }
+
 ```
 <br/>
 
@@ -1107,7 +1116,7 @@ contract Property{
 
 > ***Coding: Inheritance***
  
- ```
+ ```javascript
  //SPDX-License-Identifier: GPL-3.0
 
 pragma solidity >= 0.5.0 < 0.9.0 ;
@@ -1129,7 +1138,8 @@ contract BaseContrcat{
 contract A is BaseContract{
     int public y = 3;
 }
- ```
+
+```
 <br/>
 
 If we consider an instance of the contract **A**, it will inherit the code of it's **BaseContract** like it was copied into the contract **A**. The **constructor** of the BaseContrcat is implicitly called when contrcat **A** is deployed.
@@ -1173,7 +1183,8 @@ If we consider an instance of the contract **A**, it will inherit the code of it
 3. New we declare the state variables which hold the **name** and the **symbol** of the token which in our case are ***Maftos*** and ***MFT*** respectively.
  
 
-    ```
+    ```javascript
+
     string public name = "Maftos";
     string public symbol = "MFT";
 
@@ -1181,28 +1192,32 @@ If we consider an instance of the contract **A**, it will inherit the code of it
 
 4. Declaring the decimals value which is the number of digits afetr the decimal place, which in our case is 0 for simplicity
 
-    ```
+    ```javascript
+
     uint public decimals = 0; //18 is very common
 
     ```
 
 5. The `totalSupply` representing the total number of tokens. As there is already a function called `totalSupply` in the **interface**, we must use `override`
 
-    ```
+    ```javascript
+
     uint public override totalSupply;
 
     ```
 
 6. The address that deploys the contract: the **founder**. Note that this is not a part of ERC 20 standards
 
-    ```
+    ```javascript
+
     address public founder;
 
     ```
 
 7. The state variable which stores the number of tokens in an address
 
-    ```
+    ```javascript
+
     mapping(address => uint) public balances;
     // balances[0x1111...] = 100;
 
@@ -1214,26 +1229,29 @@ If we consider an instance of the contract **A**, it will inherit the code of it
 
 1. We will initializing the totalSupply to one million. The **founder** will be the address that deploys the contract and it will own the total **tokenSupply**. One important thing to notice is that the ERC 20 standard defines certain functions, and if we declare state variables with the same name we don't require them to be explicitly declared and the corresponding getter functions will be created automatically.
 
-```
+```javascript
+
 constructor(){
         totalSupply = 1000000;
         founder = msg.sender;
         balances[founder] = totalSupply;
     }
+
 ```
 
 2. The `balanceOf()` function takes an **address** as an argument and returns the balance of that address. 
 
-    ```
+    ```javascript
+
      function balanceOf(address tokenOwner) public view override returns (uint balance){
         return balances[tokenOwner];
     }
     
-
     ```
 3. To tranfer tokens from an account to a recipient address (it must also fire a transfer event). 
 
-    ```
+    ```javascript
+
     function transfer(address to, uint tokens) public override returns(bool success){
         require(balances[msg.sender] >= tokens);
         
@@ -1243,6 +1261,7 @@ constructor(){
         
         return true;
     }
+
     ```
 >Note that we have followed the general guidelines that functions **revert** instead of returning **false** on failure
 
@@ -1280,7 +1299,8 @@ the following info: allowed[address_of_A][address_of_B] = 80
 
 1. Let us define a state variable of type `mapping` called `allowed`
 
-    ```
+    ```javascript
+
     function allowance(address tokenOwner, address spender) view public override returns(uint){
         return allowed[tokenOwner][spender];
     }
@@ -1288,7 +1308,8 @@ the following info: allowed[address_of_A][address_of_B] = 80
     ```
 2. Next we implement the `approve` function. which will be called by **token owner** to set the `allowance`, which is the amount that can be spent by the **spender** from his account. 
 
-    ```
+    ```javascript
+
     function approve(address spender, uint tokens) public override returns (bool success){
         require(balances[msg.sender] >= tokens);
         require(tokens > 0);
@@ -1302,7 +1323,8 @@ the following info: allowed[address_of_A][address_of_B] = 80
     ```
 3. Finally, we implement `transferFrom()` which allows the spender to withdraw from owner's account multiple times, upto the **allowance** value.
 
-    ```
+    ```javascript
+
     function transferFrom(address from, address to, uint tokens) public override returns (bool success){
          require(allowed[from][to] >= tokens);
          require(balances[from] >= tokens);
@@ -1316,6 +1338,7 @@ the following info: allowed[address_of_A][address_of_B] = 80
          return true;
      }
     }
+
     ```
 <br/>
 
@@ -1378,92 +1401,113 @@ the following info: allowed[address_of_A][address_of_B] = 80
 
 1. First, we declare a contract called `MaftosICO` that derives from the `Maftos` contract.
 
-    ```
+    ```javascript
+
     contract MaftosICO is Maftos{}
+
     ```
 <br/>
 
 2. Declaring the `admin`, the **account** that deploys the contract
 
-    ```
+    ```javascript
+
     address public admin;
+
     ```
 <br/>   
 
 3. Declaring the `address` that gets tranferred to the Ethers sent to the `contrcat`. The investors will send Eth to the contract's address, and the **Maftos** will be added to the 
 balance of the investors.
 
-    ```
+    ```javascript
     address payable public deposit;
+
     ```
+
 <br/>
 
 4. Declaring the `tokenPrice`. The investors will get 1000 MFT for investing 1 ETH
 
-    ```
+    ```javascript
+
    uint tokenPrice = 0.001 ether;  // 1 ETH = 1000 MFT, 1 CRPT = 0. 001
+
     ```
 <br/>
 
 5. Declaring the **hardCap**
 
-    ```
+    ```javascript
     uint public hardCap = 300 ether;
+
     ```
 <br/>
 
 6. Declaring the variable `raisedAmount` that holds the total amount of Ether sent to the ICO
 
-    ```
+    ```javascript
+
     uint public raisedAmount; // this value will be in wei
+
     ```
 <br/>
 
 7. Declaring the ICO **startDate** and **endDate** where it starts rightaway and ends after one week
 
-    ```
+    ```javascript
+
     uint public saleStart = block.timestamp;
     uint public saleEnd = block.timestamp + 604800; //one week
+
     ```
 <br/>
 
 8. it's a common practice to lock the token for an amount of time. We want the tokens to be transferable only after a time after the ICO ends so that the early investors can't dump the tokens on the market, causin the price to collpase.
 
-    ```
+    ```javascript
     uint public tokenTradeStart = saleEnd + 604800; //transferable in a week after saleEnd
+
     ```
 <br/>
 
 9. Declaring the maximum and minimum investment of an address
 
-    ```
+    ```javascript
     uint public maxInvestment = 5 ether;
     uint public minInvestment = 0.1 ether;
+
     ```
 <br/>
 
 10. Declaring a `enum` type called `State`
 
-    ```
+    ```javascript
+
      enum State { beforeStart, running, afterEnd, halted} // ICO states 
-     ```
+
+    ```
 <br/>
 
 11. Declaring a **state variable** of type `state` that will be called `icoState`
 
-    ```
+    ```javascript
+
     State public icoState;
+
     ```
 <br/>    
 
 12. Declaring the **constructor** of the contract that will initialize the deposit address to its **argument** and the **admin** of the contract to the address that deploys the contract. The ICO will start after the deployment
 
-    ```
+    ```javascript
+
     constructor(address payable _deposit){
         deposit = _deposit; 
         admin = msg.sender; 
         icoState = State.beforeStart;
     }
+
     ```
 
 <br/>
@@ -1474,45 +1518,54 @@ balance of the investors.
 
 1. One of the requirements of our ICO is that the admin can stop the ICo in case of an emergency. For example, if the deposit address gets compromised, or a security vulnerability is found in the contract. For that, let us declare a **function modifer** called `onlyAdmin` that will be applied to the functions that should be called only by he admin.
 
-    ```
+    ```javascript
+
     modifier onlyAdmin(){
         require(msg.sender == admin);
         _;
     }
+
     ```
 <br/>
 
 2. Declaring the function called `halt()` that can be called only by the admin to stop the ICo in case an emergency
 
-    ```
+    ```javascript
+
     // emergency stop
     function halt() public onlyAdmin{
         icoState = State.halted;
     }
+
     ```
 <br/>
 
 3. Resuming the ICO after the problem is solved by the ICO
 
-    ```
+    ```javascript
+
     function resume() public onlyAdmin{
         icoState = State.running;
     }
+
     ```
 <br/>
 
 4. To change the deposit address by the admin when it gets compromised
 
-    ```
+    ```javascript
+
     function changeDepositAddress(address payable newDeposit) public onlyAdmin{
         deposit = newDeposit;
     }
+
     ```
 <br/>
 
 5. Creating a function that returns the state of the ICO
 
-    ```
+    ```javascript
+
     function getCurrentState() public view returns(State){
         if(icoState == State.halted){
             return State.halted;
@@ -1524,6 +1577,7 @@ balance of the investors.
             return State.afterEnd;
         }
     }
+
     ```
 <br/>
 
@@ -1533,7 +1587,8 @@ balance of the investors.
 This function will be called when somebody sends some ether and receives some **Maftos** in return. 
 <br/>
 
-```
+```javascript
+
     event Invest(address investor, uint value, uint tokens);
     
     // function called when sending eth to the contract
@@ -1560,6 +1615,7 @@ This function will be called when somebody sends some ether and receives some **
    receive () payable external{
         invest();
     }
+
 ```
 <br/>
 
@@ -1609,7 +1665,8 @@ This function will be called when somebody sends some ether and receives some **
 
 When people hurry to sell their tokens, the price will drop. It might be good idea to lock up the tokens for a period of time after the ICO ends, thus, making sure that the tokens should not be transferrable right away. To lock up the tokens we will `override` the two functions: `tranfer()` and `transferFrom` in the ICO contract and add the token locking feature.
 
-```
+```javascript
+
     function transfer(address to, uint tokens) public override returns (bool success){
         require(block.timestamp > tokenTradeStart); // the token will be transferable only after tokenTradeStart
         
@@ -1626,6 +1683,7 @@ When people hurry to sell their tokens, the price will drop. It might be good id
         return true;
      
     }
+
 ```
 <br/>
 
@@ -1634,7 +1692,8 @@ When people hurry to sell their tokens, the price will drop. It might be good id
 
 Another good practice is to burn the unsold tokens. The ICO Hardcap is 300 ETH which means we accept a maximum investment of 300 ETH and sell tokens in value of 300 ETH. Generally burning tokens will increase the token's price. 
 
-```
+```javascript
+
 // burning unsold tokens
     function burn() public returns(bool){
         icoState = getCurrentState();
@@ -1643,6 +1702,7 @@ Another good practice is to burn the unsold tokens. The ICO Hardcap is 300 ETH w
         return true;
         
     }
+
 ```
 <br/>
 
