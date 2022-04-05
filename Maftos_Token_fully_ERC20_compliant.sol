@@ -20,7 +20,7 @@ interface ERC20Interface {
 }
 
 
-contract Maftos is ERC20Interface{
+contract Maftos is ERC20Interface {
     string public name = "Maftos";
     string public symbol = "MFT";
     uint public decimals = 0; //18 is very common

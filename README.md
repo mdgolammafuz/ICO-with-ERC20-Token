@@ -1342,8 +1342,84 @@ the following info: allowed[address_of_A][address_of_B] = 80
     ```
 <br/>
 
-## ***Testing ERC 20 Compliant Maftos Token on Rinkeby Testnet***
- 
+## ***Testing ERC 20 Compliant Maftos Token on Rinkeby Testnet and Javascript Virtual Machine***
+
+1. We deploy the the contract **Maftos** on Javascript VM choosing **5B38Da6a701c568545dCfcB03FcB875f56beddC4** as **admin**.
+
+![](assets\Screenshot237.png)
+<br/>
+
+2. Now, we transfer **1000** tokens from the owner to the address **0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db**. We fill the **transfer box** on remix with: "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db", 1000, and call the `transfer()` on Remix from the owner address. Finally, we check the `balanceOf` the recipint (should be **1000**) and the owner (should be **1000** less than the `totalSupply`) address. Finally, we try to transfer **2000** tokens from the address **0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db** (whoose balance is **1000**) to any other address and we get an error thrown by the `require()` function (the **modifier**).
+
+![](assets\Screenshot239.png)
+<br/>   
+
+![](assets\Screenshot240.png)
+<br/>
+
+![](assets\Screenshot241.png)
+<br/>
+
+3. Now we deploy the **Maftos** contract from the **first** account **0x69F48dd0298966fb6215fe87F60c312D47507cD8** of my Metamask wallet, and thereafter import the **Maftos** tokens. Wee see a balance of **1000000 MFT Tokens**.
+
+![](assets\Screenshot242.png)
+<br/>
+
+![](assets\Screenshot243.png)
+<br/>
+
+![](assets\Screenshot244.png)
+<br/>
+
+![](assets\Screenshot245.png)
+<br/>
+
+4. Next, we send **5000 MFT Tokens*** from my **first Metamask account** to my **second** Metamask account **76957C33B4dB4C9192f11b6c4bB49302070E4987
+**. 
+
+![](assets\Screenshot246.png)
+<br/>
+
+![](assets\Screenshot247.png)
+<br/>
+
+5. In this step, we transfer **555 MFT Tokens** from my **second** Metamask account **76957C33B4dB4C9192f11b6c4bB49302070E4987** to my **first** Metamask account **0x69F48dd0298966fb6215fe87F60c312D47507cD8**
+
+![](assets\Screenshot248.png)
+<br/>
+
+![](assets\Screenshot249.png)
+<br/>
+
+> ***Final Remark !!!***
+> 
+> When we want to send the tokens to another address, we send it to the externally owned account address that should receive the tokens and ***not to the contract address !!!*** So, in our wallet we paste the externally owned account address as the recipient. ***Tokens in value of milllions have been lost because users tried to send them to the contract's address instead***. Please take a look at the transaction on **([etherscan.io](https://rinkeby.etherscan.io/tx/0x5f557e0e03a3d20e9ef242a9ce373f91bea76cce5b6752792efc18d2af707094))** that represents the transfer of **555 MFT Tokens**. Even though the tokens are transferred to the recipient's address, in the **Etherium** transactions, there is the contract's address as the destination. ***How is that possible ???*** Behind the scenes, the **ERC 20** compatible **wallet** such as **Metamask** have sent the transaction to the contract's address and called the `transfer()` with the recipient's externally owned account address and number of tokens as arguments. So, in a nutshell, we send the tokens to EOA, but the wallet which knows the contract's address will send them behind the scenes to the contract's address.
+> 
+> ![](assets\Screenshot251.png)
+
+<br/>
+
+6. Next, we deploy the contract **Maftos** using the **first account 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4** on Javascript VM. We want to set the allowance for the second account **0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2** to **100**. For that, we paste:**0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2,100** in the **approve** box on Remix and call `approve()`. After that we paste: **0x5B38Da6a701c568545dCfcB03FcB875f56beddC4,0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2** and call `allowance()`. Thus we have allowed the second account to withdraw a maximum of 100 MFT's from the founder's address. 
+
+![](assets\Screenshot252.png)
+<br/>
+
+![](assets\Screenshot253.png)
+
+<br/>
+
+7. Let's say, the spender **Ab8483F64d9C6d1EcF9b849Ae677dD3315835cb2** wants to withdraw **30 MFT's** from the owner's account to his own account. For that paste: **0x5B38Da6a701c568545dCfcB03FcB875f56beddC4,0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2,30**  in the **transferFrom** box, then run the transaction from the **second account 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2**. To cinfirm, check the balance of the spender's account (should be 30) and the **updated allowance** (**new allowance should be 70**).
+
+![](assets\Screenshot254.png)
+<br/>
+
+![](assets\Screenshot255.png)
+<br/>
+
+![](assets\Screenshot256.png)
+
+<br/>
+
 # ***Implementing and Running an Initial Coin Offering (ICO)***
 <br/>
 
