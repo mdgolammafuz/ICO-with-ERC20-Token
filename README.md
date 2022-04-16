@@ -1,6 +1,24 @@
-# ***Mastering-Solidity-Programming-from-Scratch***
+# ***Implenting Initial Coin Offering ( aca ICO ) with an ERC 20 Compliant, Customized CrypoToken Maftos on Rinkeby Etherium Testnetwork - Mastering Solidity from the Scratch***
 
-Fundamentals of ***Solidity*** for ***Ethereum Blockchain***
+Fundamentals of ***Solidity*** for the ***Ethereum Blockchain***
+
+<br/>
+
+## ***Goal***
+
+In this project we explore:
+
+<br/>
+
+1. ***Fundamentals and Advanced Concepts of Solidity*** 
+ 
+<br/> 
+
+2. ***Implement a fully functional end to end ERC 20 Compliant Customized CryptoToken called Maftos***
+
+<br/> 
+
+3. ***Implement a fully fuctional end to end Intial Coin Offering (ICO) project on the Rinkeby Etherium TestNetwork***
 
 <br/>
 
@@ -425,8 +443,6 @@ contract A{
 ```
 <br/>
 
-<br/>
-
 **Answer: `[10,66]`** 
 
 <br/>
@@ -574,6 +590,7 @@ contract A{
 <br/>
 
 This brings us to a really interesting point: something called variable scope. Take a look at this. We have a variable called `saySomething` with a value of `"hello"`. Inside this `doStuff` function, we have another variable called saySomething with a value of `"goodbye"`. So, while we're inside this function, what do you think the value of `saySomething` is? If you said `goodbye`, you're right, the saySomething variable inside the function is said to be shadowing the same variable name outside the function, and as you can see that's a bad thing. When this function exits, the value of `saySomething` is now back to the original value of `"hello"`; that's because the variables declared inside this function only exist within the function. Once the function exits, those variables are gone. on exits, the value of `saySomething` is now back to the original value of `"hello"`; that's because the variables declared inside this function only exist within the function. Once the function exits, those variables are gone. Outside of the doStuff func there's not even a thing called `saySomethingElse` that can be accessed. That's an important point to remember when you're building your functions: what variables are needed inside the function and what data is needed from the function after it exits:
+
 <br/>
 
 ```javascript
@@ -1110,8 +1127,9 @@ contract Property{
     * All declared functions must be external
     * They cannot declare a constructor
     * They cannot declare a constructor
-     
+
 4. An **interface** is created using the `interface` keyword instead of contract; 
+  
 <br/>
 
 > ***Coding: Inheritance***
@@ -1340,9 +1358,11 @@ the following info: allowed[address_of_A][address_of_B] = 80
     }
 
     ```
+
 <br/>
 
 ## ***Testing ERC 20 Compliant Maftos Token on Rinkeby Testnet and Javascript Virtual Machine***
+<br/>
 
 1. We deploy the the contract **Maftos** on Javascript VM choosing **5B38Da6a701c568545dCfcB03FcB875f56beddC4** as **admin**.
 
@@ -1838,3 +1858,44 @@ Another good practice is to burn the unsold tokens. The ICO Hardcap is 300 ETH w
 ![](assets/Screenshot235.png)
 
 <br/>
+
+# References
+
+1. [**Master Ethereum & Solidity Programming From Scratch** created by **Andrei Dumitrescu, Crystal Mind Academy** on **Udemy**](https://www.udemy.com/course/master-ethereum-and-solidity-programming-with-real-world-apps/)
+<br/>
+
+2. **The Blockchain Developer**
+<br/> 
+**Elad Elrom**
+<br/>
+New York, NY, USA
+<br/>
+ISBN-13 (pbk): 978-1-4842-4846-1 
+
+4. **Ethereum for Architects and Developers**
+<br/>
+**Debajani Mohanty**
+<br/>
+Noida, Uttar Pradesh, India
+<br/>
+ISBN-13 (pbk): 978-1-4842-4074-8    
+
+4. **Building Games with Ethereum Smart Contracts** 
+<br/>
+**Kedar Iyer**
+<br/>
+Brooklyn, New York, USA 
+<br/>
+**Chris Dannen**
+<br/>
+Brooklyn, New York, USA
+<br/>
+ISBN-13 (pbk): 978-1-4842-3491-4 
+<br/>
+
+5. **Hands-On Blockchain Development in 7 Days**
+<br/>
+**Will Button**
+<br/>
+Copyright © 2019 Packt Publishing 
+
