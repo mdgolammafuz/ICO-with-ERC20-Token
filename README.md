@@ -1862,40 +1862,39 @@ Another good practice is to burn the unsold tokens. The ICO Hardcap is 300 ETH w
 # References
 
 1. [**Master Ethereum & Solidity Programming From Scratch** created by **Andrei Dumitrescu, Crystal Mind Academy** on **Udemy**](https://www.udemy.com/course/master-ethereum-and-solidity-programming-with-real-world-apps/)
-<br/>
-
+  
 2. **The Blockchain Developer**
-<br/> 
-**Elad Elrom**
-<br/>
-New York, NY, USA
-<br/>
-ISBN-13 (pbk): 978-1-4842-4846-1 
+   <br/> 
+   **Elad Elrom**
+   <br/>
+   New York, NY, USA
+   <br/>
+   ISBN-13 (pbk): 978-1-4842-4846-1 
 
-4. **Ethereum for Architects and Developers**
-<br/>
-**Debajani Mohanty**
-<br/>
-Noida, Uttar Pradesh, India
-<br/>
-ISBN-13 (pbk): 978-1-4842-4074-8    
+3. **Ethereum for Architects and Developers**
+   <br/>
+   **Debajani Mohanty**
+   <br/>
+   Noida, Uttar Pradesh, India
+   <br/>
+   ISBN-13 (pbk): 978-1-4842-4074-8    
 
 4. **Building Games with Ethereum Smart Contracts** 
-<br/>
-**Kedar Iyer**
-<br/>
-Brooklyn, New York, USA 
-<br/>
-**Chris Dannen**
-<br/>
-Brooklyn, New York, USA
-<br/>
-ISBN-13 (pbk): 978-1-4842-3491-4 
-<br/>
+   <br/>
+   **Kedar Iyer**
+   <br/>
+   Brooklyn, New York, USA 
+   <br/>
+   **Chris Dannen**
+   <br/>
+   Brooklyn, New York, USA
+   <br/>
+   ISBN-13 (pbk): 978-1-4842-3491-4 
+
 
 5. **Hands-On Blockchain Development in 7 Days**
-<br/>
-**Will Button**
-<br/>
-Copyright © 2019 Packt Publishing 
+   <br/>
+   **Will Button**
+   <br/>
+   Copyright © 2019 Packt Publishing 
 
