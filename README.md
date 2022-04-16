@@ -1,4 +1,4 @@
-# ***Implenting Initial Coin Offering ( aca ICO ) with an ERC 20 Compliant, Customized CrypoToken Maftos on Rinkeby Etherium Testnetwork - Mastering Solidity from the Scratch***
+# ***Implementing Initial Coin Offering ( aka ICO ) with an ERC 20 Compliant, Customized CrypoToken Maftos on Rinkeby Etherium Test network - Mastering Solidity from the Scratch***
 
 Fundamentals of ***Solidity*** for the ***Ethereum Blockchain***
 
@@ -18,7 +18,7 @@ In this project we explore:
 
 <br/> 
 
-3. ***Implement a fully fuctional end to end Intial Coin Offering (ICO) project on the Rinkeby Etherium TestNetwork***
+3. ***Implement a fully functional end to end Initial Coin Offering (ICO) project on the Rinkeby Etherium TestNetwork***
 
 <br/>
 
@@ -39,7 +39,7 @@ EVM bytecode that is deployed and the contract **ABI - Abstract Binary Interface
 * Contract bytecode is public. It is saved on the Blockchain and can’t be encrypted because it must be run by every Ethereum node.
 <br/>
 
-* **Opcodes** are the human readable instructions of the program. They can be easily obtained from bytecode.
+* **Opcodes** are the human-readable instructions of the program. They can be easily obtained from the bytecode.
 <br/>
 
 * Contract source code doesn’t have to be public. Most contracts are public to build trust.
@@ -49,7 +49,7 @@ EVM bytecode that is deployed and the contract **ABI - Abstract Binary Interface
 ABI is basically how you call functions in a contract and get data back.
 <br/>
 
-* ABI is list of contract’s function and arguments and it’s in JSON format. ABI is known at compile time.
+* ABI is a list of contract functions and arguments and it’s in JSON format. ABI is known at compile time.
 <br/>
 
 * ABI is generated from source code through compilation. If we don’t have the source code we can’t generate the contract ABI (or only from the bytecode using reverse engineering).
@@ -90,19 +90,19 @@ In Solidity, `bool` stands for a Boolean value that is either `true` or `false`.
 
 * `int` is alias to `int256` and `uint` is an alias to `uint256`
 
-* By default an int is initialized with zero
+* By default, an int is initialized with zero
 
-* There is no full support for float/double (fixed point numbers) in Solidity
+* There is no full support for float/double (fixed-point numbers) in Solidity
  
 <br/>
 
 3. ***address***
 
-While all the previously data types are common to other programming languages, the `address` data type is unique to Solidity. It's a 20-byte value that's used to represent an `address` on the Ethereum network. The address can be a user's Ethereum account or a contract deployed to the network. It has a `.balance()` **member** that can be called to check the balance associated with the account, and a `.transfer()` **member** that can be used to transfer funds to that address. There's also a `.send()` **member**, which is the low-level counterpart of the `.transfer()` **member**. If you use `.send()`, you must check the `return` value of the operation for success or failure, but if you're using .`transfer()`, the `transfer` member handles this for you automatically.
+While all the previous data types are common to other programming languages, the `address` data type is unique to Solidity. It's a 20-byte value that's used to represent an `address` on the Ethereum network. The address can be a user's Ethereum account or a contract deployed to the network. It has a `.balance()` **member** that can be called to check the balance associated with the account, and a `.transfer()` **member** that can be used to transfer funds to that address. There's also a `.send()` **member**, which is the low-level counterpart of the `.transfer()` **member**. If you use `.send()`, you must check the `return` value of the operation for success or failure, but if you're using .`transfer()`, the `transfer` member handles this for you automatically.
 
 <br/>
 
-> Please read about [SafeMath, Overflows and Underflows](https://peckshield.medium.com/alert-new-batchoverflow-bug-in-multiple-erc20-smart-contracts-cve-2018-10299-511067db6536).
+> Please read about [SafeMath, Overflows, and Underflows](https://peckshield.medium.com/alert-new-batchoverflow-bug-in-multiple-erc20-smart-contracts-cve-2018-10299-511067db6536).
 
 <br/>
 
@@ -244,7 +244,7 @@ In Solidity, a string is a type passed by reference. The string data type is use
    
   * A struct introduces a new complex data type, that is composed of elementary data types
    
-  * Structs are used to represent a singular thing that has properties such as a Car, a Person, a Request and so on and we use mappings to represent a collection of things like a collection of Cars, Requests etc
+  * Structs are used to represent a singular thing that has properties such as a Car, a Person, a Request, and so on and we use mappings to represent a collection of things like a collection of Cars, Requests, etc
    
   * A struct is saved in storage and if declared inside a function it references storage by default
 <br/>
@@ -254,7 +254,7 @@ In Solidity, a string is a type passed by reference. The string data type is use
 
   * Enums are explicitly convertible to and from integer
  
-  * Enums are user defined types that contain human readable names for a set of constants, called members
+  * Enums are user-defined types that contain human-readable names for a set of constants, called members
    
 <br/>
 
@@ -315,19 +315,19 @@ contract School{
 
 1. ***Mappings***
 
-   * It’s a data structure that holds key->value pairs. Its similar to Python Dictionaries, JS objects or Java HashMaps
+   * It’s a data structure that holds key->value pairs. It's similar to Python Dictionaries, JS objects, or Java HashMaps
  
    * All keys must have the same type and all values must have the same type  
 
-   * The keys can not be of types mapping, dynamic array, enum or struct. The values can be of any type including mapping
+   * The keys can not be of types mapping, dynamic array, enum, or struct. The values can be of any type including mapping
 
    * Mapping is always saved in storage, its’ a state variable. Mappings declared inside functions are also saved in storage
     
-   * The mappings advantage is that lookup time is constant no matter mapping’s size
+   * The mappings advantage is that lookup time is constant no matter the mapping’s size
   
    * A mapping is not iterable, we can’t iterate through a mapping using a for loop
   
-   * Keys are not saved into the mapping (its a hash table data structure). To get a value from the mapping we provide a key, the key gets passed through a hashing function, that outputs a predetermined index that returns the corresponding value from the mapping
+   * Keys are not saved into the mapping (it's a hash table data structure). To get a value from the mapping we provide a key, the key gets passed through a hashing function, that outputs a predetermined index that returns the corresponding value from the mapping
   
    * If we want the value of an unexisting key we get a default value
 
@@ -358,7 +358,7 @@ contract Auction{
 
 <br/>
 
-> 1. What is the correct way of defining a mapping?
+> 1. What is the correct way of defining mapping?
 > 
 ```
 mapping(address => uint) public bids;
@@ -383,7 +383,7 @@ string public s1 = 'abc';
  What can you say about the above declarations?
 <br/>
 
-**Answer: We can add a new element to `b1` by calling the `push()` member function, but we can't do the same for `s1`. We can return a element of `b1` using indexing which is not possible for `s1`** 
+**Answer: We can add a new element to `b1` by calling the `push()` member function, but we can't do the same for `s1`. We can return an element of `b1` using indexing which is not possible for `s1`** 
 
 <br/>
 
@@ -455,18 +455,18 @@ contract A{
 
 1. **State Variables**
 
-* Declared at contract level
+* Declared at the contract level
 * Permanently stored in contract storage
 * Can be set as constants
 * Expensive to use, they cost gas
-* Initialized at declaration, using a constructor or after contract deployment by calling setters
+* Initialized at declaration, using a constructor, or after contract deployment by calling setters
 <br/>
 
 2. **Local variables**
 
 * Declared inside functions
-* If using the **memory** keyword and are arrays or struct, they are allocated at runtime.
-* Memory keyword can’t be used at contract level
+* If using the **memory** keyword and are arrays or structs, they are allocated at runtime.
+* Memory keyword can’t be used at the contract level
  
 <br/>
 
@@ -482,7 +482,7 @@ a) **Storage**
 
 b) **Stack**
 
-* Holds local variables defined inside functions if they are not reference types (ex: int)
+* Holds local variables defined inside functions if they are not referenced types (ex: int)
 * Free to be used (it doesn’t cost gas)
  
 <br/>
@@ -524,7 +524,7 @@ c) **Memory**
 ```
 <br/>
 
-1. The state variable `cities` will not be modified, since the first element of the dynamic array has remain unchanged. So the function ``f_memory`` worked on a copy not, not on the **state** variable.
+1. The state variable `cities` will not be modified, since the first element of the dynamic array has remained unchanged. So the function ``f_memory`` worked on a copy not, not on the **state** variable.
 <br/>
  
 ![](assets/Screenshot205.png)
@@ -589,7 +589,7 @@ contract A{
 ## ***Variable scope: An Example***
 <br/>
 
-This brings us to a really interesting point: something called variable scope. Take a look at this. We have a variable called `saySomething` with a value of `"hello"`. Inside this `doStuff` function, we have another variable called saySomething with a value of `"goodbye"`. So, while we're inside this function, what do you think the value of `saySomething` is? If you said `goodbye`, you're right, the saySomething variable inside the function is said to be shadowing the same variable name outside the function, and as you can see that's a bad thing. When this function exits, the value of `saySomething` is now back to the original value of `"hello"`; that's because the variables declared inside this function only exist within the function. Once the function exits, those variables are gone. on exits, the value of `saySomething` is now back to the original value of `"hello"`; that's because the variables declared inside this function only exist within the function. Once the function exits, those variables are gone. Outside of the doStuff func there's not even a thing called `saySomethingElse` that can be accessed. That's an important point to remember when you're building your functions: what variables are needed inside the function and what data is needed from the function after it exits:
+This brings us to a really interesting point: something called variable scope. Take a look at this. We have a variable called `saySomething` with a value of `"hello"`. Inside this `doStuff` function, we have another variable called saySomething with a value of `"goodbye"`. So, while we're inside this function, what do you think the value of `saySomething` is? If you said `goodbye`, you're right, the saySomething variable inside the function is said to be shadowing the same variable name outside the function, and as you can see that's a bad thing. When this function exits, the value of `saySomething` is now back to the original value of `"hello"`; that's because the variables declared inside this function only exist within the function. Once the function exits, those variables are gone. on exits, the value of `saySomething` is now back to the original value of `"hello"`; that's because the variables declared inside this function only exist within the function. Once the function exits, those variables are gone. Outside of the doStuff func, there's not even a thing called `saySomethingElse` that can be accessed. That's an important point to remember when you're building your functions: what variables are needed inside the function and what data is needed from the function after it exits:
 
 <br/>
 
@@ -605,7 +605,7 @@ function doStuff() internal {
 ```
 <br/>
 
-> **Coding - Variables and Functions with Basic Structure of Smart Contracts: Setters, Getters and the Constructor**
+> **Coding - Variables and Functions with Basic Structure of Smart Contracts: Setters, Getters, and the Constructor**
  <br/>
 
 ```javascript
@@ -618,7 +618,7 @@ contract Property{
     uint price; // by default is private
     string public location;
     
-    // can be initialized at declaration or in the constructor only
+    // can be initialized at the declaration or in the constructor only
     address immutable public owner;
     
     // declaring a constant
@@ -677,8 +677,8 @@ the transaction or call, as well
 
 ## ***Contract Address***
 
-1. Any contract has its own unique address that is generated at deployment
-2. The contract address is generated based on the address of the account that deploys the contract and the no. of transactions of that account (nonce . It can’t be calculated in advance.
+1. Any contract has its unique address that is generated at deployment
+2. The contract address is generated based on the address of the account that deploys the contract and the no. of transactions of that account (nonce. It can’t be calculated in advance.
 3. Address is a variable type and has the following members:
    
    * `balance`
@@ -703,7 +703,7 @@ the transaction or call, as well
    
   * By calling a payable function and sending ETH with that transaction
    
-* The ETH balance of the contract is in possession of anyone who can call the `transfer()` built-in function
+* The ETH balance of the contract has anyone who can call the `transfer()` built-in function
  
 <br/>
 
@@ -735,7 +735,7 @@ fallback() external payable {
 }
     
     
-// ether can be send and received by the contract in the trasaction that calls thisfunction as well
+// ether can be sent and received by the contract in the transaction that calls thisfunction as well
 function sendEther() public payable{
         
 }
@@ -754,7 +754,7 @@ return address(this).balance;
 ![Solidity Code](assets/Screenshot182.png)
 <br/>
 
-2. Choose **Injected Web3** on **Remix** and deploy the contract. As soon as we deploy the contract on **Remix** , **Metamask** will pop up. Confirm the transaction on Metamask.
+2. Choose **Injected Web3** on **Remix** and deploy the contract. As soon as we deploy the contract on **Remix**, **Metamask** will pop up. Confirm the transaction on Metamask.
 <br/>
 
 ![](assets/Screenshot170.png)
@@ -766,7 +766,7 @@ return address(this).balance;
 ![](assets/Screenshot172.png)
 <br/>
 
-1. Once the **transaction** is **mined** on **Rinkeby** test network, a confirmation message will pop up from **Metamask**. We can see the details of the transaction on **Remix** as well as on **etherscan**.  
+1. Once the **transaction** is **mined** on the **Rinkeby** test network, a confirmation message will pop up from **Metamask**. We can see the details of the transaction on **Remix** as well as on **etherscan**.  
 <br/>
 
 ![](assets/Screenshot173.png)
@@ -787,7 +787,7 @@ return address(this).balance;
 ![](assets/Screenshot176.png)
 <br/>
 
-6. Once the transaction is mined, Metamask will show the confirmation message. Now, call `getBalance` again and check the balance to find it whether it is **55555 Wei** or not.
+6. Once the transaction is mined, Metamask will show the confirmation message. Now, call `getBalance` again and check the balance to find whether it is **55555 Wei** or not.
 <br/>
 
 ![](assets/Screenshot177.png)
@@ -797,7 +797,7 @@ return address(this).balance;
 
 <br/>
 
-## ******Securing*** the ***Contract's Balance*** against unauthorized access***
+## ***Securing the Contract's Balance against unauthorized access***
 
 One approach is to restrict the access of `transferEther()` to the account which deploys the contract to secure the Contract's balance against the unauthorized access. 
 <br/>
