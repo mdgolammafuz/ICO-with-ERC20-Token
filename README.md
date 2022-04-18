@@ -1366,7 +1366,8 @@ the following info: allowed[address_of_A][address_of_B] = 80
 
 1. We deploy the the contract **Maftos** on Javascript VM choosing **5B38Da6a701c568545dCfcB03FcB875f56beddC4** as **admin**.
 
-![](assets\Screenshot237.png)
+   ![](assets\Screenshot237.png)
+
 <br/>
 
 2. Now, we transfer **1000** tokens from the owner to the address **0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db**. We fill the **transfer box** on remix with: "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db", 1000, and call the `transfer()` on Remix from the owner address. Finally, we check the `balanceOf` the recipint (should be **1000**) and the owner (should be **1000** less than the `totalSupply`) address. Finally, we try to transfer **2000** tokens from the address **0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db** (whoose balance is **1000**) to any other address and we get an error thrown by the `require()` function (the **modifier**).
