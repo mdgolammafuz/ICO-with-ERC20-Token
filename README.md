@@ -1,4 +1,4 @@
-# ***Implementing Initial Coin Offering ( aka ICO ) with an ERC 20 Compliant, Customized CrypoToken Maftos on Rinkeby Etherium Test network - Mastering Solidity from the Scratch***
+# ***Implementing Initial Coin Offering ( aka ICO ) with an ERC 20 Compliant, Customized Crypto Token Maftos on Rinkeby Ethereum Test Network - Mastering Solidity from the Scratch***
 
 Fundamentals of ***Solidity*** for the ***Ethereum Blockchain***
 
