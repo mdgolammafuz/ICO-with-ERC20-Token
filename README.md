@@ -861,7 +861,7 @@ pragma solidity >=0.5.0 <0.9.0;
 ![](assets/Screenshot186.png)
 <br/>
 
-2. Now, let me choose my second account of my Metamask Wallet, which is not the **owner** to access the `transferEther()`. It shows error as can be seen from the following screenshots!
+2. Now, let me choose my second account of my Metamask Wallet, which is not the **owner** to access the `transferEther()`. It shows an error as can be seen from the following screenshots!
 <br/>
 
 ![](assets/Screenshot190.png)
@@ -870,7 +870,7 @@ pragma solidity >=0.5.0 <0.9.0;
 ![](assets/Screenshot191.png)
 <br/>
 
-3. Finally, I choose the the **first account** of my Metamask Wallet to call `transferEther()`. This time, the transaction gets successfully mined into the **Rinkeby testnet**.
+3. Finally, I choose the **first account** of my Metamask Wallet to call `transferEther()`. This time, the transaction gets successfully mined into the **Rinkeby testnet**.
 <br/>
 
 ![](assets/Screenshot192.png)
@@ -912,16 +912,16 @@ There are ***four*** visibility specifiers for functions and state variables
 
 4. **External**
  
-   * The function is part of the contract interface, can be accessed only from other contracts or by EOA accounts using transactions. It’s automatically public
+   * The function is part of the contract interface and can be accessed only from other contracts or by EOA accounts using transactions. It’s automatically public
     
-   * Not-available for state variables
+   * Not available for state variables
     
 <br/>
 
 > * Everything that is inside a contract is **visible** to all **external** observers.              
 > * Making something **private** only prevents other contracts from accessing and modifying the    information, but it will still be visible to the whole world outside of the blockchain
 > * Information is not encrypted by default on the Ethereum Blockchain
-> * The visibility specifier is given after the type for state variables and between parameter list and return parameter list for functions
+> * The visibility specifier is given after the type for state variables and between parameter list and returns parameter list for functions
 > * External functions are more efficient than public functions in terms of gas consumption
  
 <br/>
@@ -987,7 +987,7 @@ contract C{
 > ***Demonstration: Visibility Specifiers***
 <br/>
 
-1. In the above code `y` is an **internal variable** that can be accessed both  in the **current** and **derived** contracts by a **getter** function. Please note that the **getter** function is automatically crreated for the `public` variable `x` but not for the `internal` one. If we want to access the `internal` variable `y` we have to use a **getter** function. The `public` function `gety()` can be accessed from the same contract or from external contracts or from the **applications** like **Remix**.
+1. In the above code `y` is an **internal variable** that can be accessed both in the **current** and **derived** contracts by a **getter** function. Please note that the **getter** function is automatically created for the `public` variable `x` but not for the `internal` one. If we want to access the `internal` variable `y` we have to use a **getter** function. The `public` function `gety()` can be accessed from the same contract or from external contracts or from the **applications** like **Remix**.
 <br/>
 
 ![](assets/Screenshot196.png)
@@ -1077,7 +1077,7 @@ contract Property{
 ```
 <br/>
 
-**Answer: Only from the current comntract** 
+**Answer: Only from the current contract** 
 
 <br/>
 
@@ -1091,7 +1091,7 @@ contract Property{
 
 2. The general inheritance system is very similar to Python’s one, especially concerning **multiple inheritance**
 
-3. Solidity supports multiple inheritance including polymorphism. Multiple inheritance introduces problems like the “diamond problem” and should be avoided
+3. Solidity supports multiple inheritances including polymorphism. Multiple inheritances introduce problems like the “diamond problem” and should be avoided
 
 4. When a contract inherits from multiple contracts, only a single contract is created on the blockchain, and the code from all the base contracts is copied into the created contract
 
@@ -1106,7 +1106,7 @@ contract Property{
 ## ***Abstract Contracts***
 <br/>
 
-1. An **abstract** contract is the one with at least one function that is not implemented and is declared using the `abstract` keywork
+1. An **abstract** contract is the one with at least one function that is not implemented and is declared using the `abstract` keyword
 
 3. You can mark a contract as being abstract even though all functions are implemented
 
@@ -1160,7 +1160,7 @@ contract A is BaseContract{
 ```
 <br/>
 
-If we consider an instance of the contract **A**, it will inherit the code of it's **BaseContract** like it was copied into the contract **A**. The **constructor** of the BaseContrcat is implicitly called when contrcat **A** is deployed.
+If we consider an instance of the contract **A**, it will inherit the code of its **BaseContract** like it was copied into the contract **A**. The **constructor** of the BaseContrcat is implicitly called when contract **A** is deployed.
 
 <br/>
 
@@ -1175,17 +1175,17 @@ If we consider an instance of the contract **A**, it will inherit the code of it
 
     * **EIP** stands for **Ethereum Improvement Proposal** and makes changes to the actual code of Ethereum. ERC is just guidance on how to use different features of Ethereum
 
-    * ERC20 is a proposal that intends to standardize how a token contract should be defined, how we interact with such a token contract and how these contracts interact with each other
+    * ERC20 is a proposal that intends to standardize how a token contract should be defined, how we interact with such a token contract, and how these contracts interact with each other
 
     * ERC20 is a standard interface used by applications such as wallets, decentralized exchanges, and so on to interact with tokens
 
     * We need a token standard for interoperability
 
-    * We use the same wallet in which we store Ether to buy, sell or transfer a token, but we are actually interacting with a contract
+    * We use the same wallet in which we store Ether to buy, sell or transfer a token, but we are interacting with a contract
 
     * A token holder has full control and complete ownership of their tokens. The token’s contract keeps track of token ownership in the same way the Ethereum network keeps track of who owns ETH
 
-    * There are tokens that are fully-ERC20-compliant and tokens that are only partially-ERC20-compliant
+    * some tokens are fully-ERC20-compliant and tokens that are only partially-ERC20-compliant
 
     * A full compatible ERC20 Token must implement **6 functions** and **2 events**
 
@@ -1208,7 +1208,7 @@ If we consider an instance of the contract **A**, it will inherit the code of it
 
     ```
 
-4. Declaring the decimals value which is the number of digits afetr the decimal place, which in our case is 0 for simplicity
+4. Declaring the decimals value which is the number of digits after the decimal place, which in our case is 0 for simplicity
 
     ```javascript
 
@@ -1216,7 +1216,7 @@ If we consider an instance of the contract **A**, it will inherit the code of it
 
     ```
 
-5. The `totalSupply` representing the total number of tokens. As there is already a function called `totalSupply` in the **interface**, we must use `override`
+5. The `totalSupply` represents the total number of tokens. As there is already a function called `totalSupply` in the **interface**, we must use `override`
 
     ```javascript
 
@@ -1245,7 +1245,7 @@ If we consider an instance of the contract **A**, it will inherit the code of it
 
 ## ***Defining the Token Contract’s Constructor and Mandatory Functions***
 
-1. We will initializing the totalSupply to one million. The **founder** will be the address that deploys the contract and it will own the total **tokenSupply**. One important thing to notice is that the ERC 20 standard defines certain functions, and if we declare state variables with the same name we don't require them to be explicitly declared and the corresponding getter functions will be created automatically.
+1. We will initialize the totalSupply to one million. The **founder** will be the address that deploys the contract and it will own the total **tokenSupply**. One important thing to notice is that the ERC 20 standard defines certain functions, and if we declare state variables with the same name we don't require them to be explicitly declared and the corresponding getter functions will be created automatically.
 
 ```javascript
 
@@ -1266,7 +1266,7 @@ constructor(){
     }
     
     ```
-3. To tranfer tokens from an account to a recipient address (it must also fire a transfer event). 
+3. To transfer tokens from an account to a recipient address (it must also fire a transfer event). 
 
     ```javascript
 
@@ -1281,7 +1281,7 @@ constructor(){
     }
 
     ```
->Note that we have followed the general guidelines that functions **revert** instead of returning **false** on failure
+>Note that we have followed the general guidelines that function **revert** instead of returning **false** on failure
 
 <br/>
 
@@ -1292,14 +1292,14 @@ work well when tokens are being used to pay for a function in a smart contract
 
 2. ERC20 standard defines a mapping data structure named `allowed` and 2 functions 
 `approve()` and `transferFrom()` that permit a token owner to give another address 
-approval to transfer up to a number of tokens known as **allowance**
+approval to transfer up to several tokens known as **allowance**
 
 3. Allowances for an address can only be set by the owner of that address
 
 4. Imagine there are 2 users A and B. A has 1000 tokens and wants to give permission 
 to B to spend 100 of them
 
-    * A will call `approve(address_of_B, 100)`. After that the allowed data structure will 
+    * A will call `approve(address_of_B, 100)`. After that, the allowed data structure will 
 contain the following information: `allowed[address_of_A][address_of_B] = 100`
 
     * If B wants later to transfer 20 tokens from A to his account, B will execute the 
@@ -1339,7 +1339,7 @@ the following info: allowed[address_of_A][address_of_B] = 80
     }
     
     ```
-3. Finally, we implement `transferFrom()` which allows the spender to withdraw from owner's account multiple times, upto the **allowance** value.
+3. Finally, we implement `transferFrom()` which allows the spender to withdraw from the owner's account multiple times, up to the **allowance** value.
 
     ```javascript
 
@@ -1413,7 +1413,7 @@ the following info: allowed[address_of_A][address_of_B] = 80
 
 > ***Final Remark !!!***
 > 
-> When we want to send the tokens to another address, we send it to the externally owned account address that should receive the tokens and ***not to the contract address !!!*** So, in our wallet we paste the externally owned account address as the recipient. ***Tokens in value of milllions have been lost because users tried to send them to the contract's address instead***. Please take a look at the transaction on **([etherscan.io](https://rinkeby.etherscan.io/tx/0x5f557e0e03a3d20e9ef242a9ce373f91bea76cce5b6752792efc18d2af707094))** that represents the transfer of **555 MFT Tokens**. Even though the tokens are transferred to the recipient's address, in the **Etherium** transactions, there is the contract's address as the destination. ***How is that possible ???*** Behind the scenes, the **ERC 20** compatible **wallet** such as **Metamask** have sent the transaction to the contract's address and called the `transfer()` with the recipient's externally owned account address and number of tokens as arguments. So, in a nutshell, we send the tokens to EOA, but the wallet which knows the contract's address will send them behind the scenes to the contract's address.
+> When we want to send the tokens to another address, we send it to the externally owned account address that should receive the tokens and ***not to the contract address !!!*** So, in our wallet, we paste the externally owned account address as the recipient. ***Tokens in value of millions have been lost because users tried to send them to the contract's address instead***. Please take a look at the transaction on **([etherscan.io](https://rinkeby.etherscan.io/tx/0x5f557e0e03a3d20e9ef242a9ce373f91bea76cce5b6752792efc18d2af707094))** that represents the transfer of **555 MFT Tokens**. Even though the tokens are transferred to the recipient's address, in the **Etherium** transactions, there is the contract's address as the destination. ***How is that possible ???*** Behind the scenes, the **ERC 20** compatible **wallet** such as **Metamask** has sent the transaction to the contract's address and called the `transfer()` with the recipient's externally owned account address and several tokens as arguments. So, in a nutshell, we send the tokens to EOA, but the wallet which knows the contract's address will send them behind the scenes to the contract's address.
 > 
 > ![](assets\Screenshot251.png)
 
@@ -1452,16 +1452,16 @@ the following info: allowed[address_of_A][address_of_B] = 80
 
 3. The first ICO (also known as token-sale) was held by Mastercoin in July 2013. The Ethereum project raised money with a token-sale in 2014, as well. It raised 3,700 BTC in the first 12 hours
 
-4. **Who can launch an ICO? Literally anyone!**
+4. **Who can launch an ICO? Anyone!**
 
-5. Before launching an ICO it’s mandatory to verify and obey the laws of the countries your investors are coming from! For example China banned ICOs calling them illegal fundraising. Also note that the vast majority of ICOs have failed.
+5. Before launching an ICO it’s mandatory to verify and obey the laws of the countries your investors are coming from! For example, China banned ICOs calling them illegal fundraising. Also, note that the vast majority of ICOs have failed.
  
 <br/>
 
 ## ******Planning*** the ICO***
 <br/>
 
-1. Our **ICO** will be a **Smart Contract** that accepts **ETH** in exchange for our own token named **Maftos (MFT)**
+1. Our **ICO** will be a **Smart Contract** that accepts **ETH** in exchange for our token named **Maftos (MFT)**
 
 2. The **Maftos** token is a **fully compliant ERC20 token** and will be generated at the ICO time
 
@@ -1513,7 +1513,7 @@ the following info: allowed[address_of_A][address_of_B] = 80
     ```
 <br/>   
 
-3. Declaring the `address` that gets tranferred to the Ethers sent to the `contrcat`. The investors will send Eth to the contract's address, and the **Maftos** will be added to the 
+3. Declaring the `address` that gets transferred to the Ethers sent to the `contract`. The investors will send Eth to the contract's address, and the **Maftos** will be added to the 
 balance of the investors.
 
     ```javascript
@@ -1532,7 +1532,7 @@ balance of the investors.
     ```
 <br/>
 
-5. Declaring the **hardCap**
+5. Declaring the **hard cap**
 
     ```javascript
     uint public hardCap = 300 ether;
@@ -1544,12 +1544,12 @@ balance of the investors.
 
     ```javascript
 
-    uint public raisedAmount; // this value will be in wei
+    uint public raisedAmount; // this value will be in Wei
 
     ```
 <br/>
 
-7. Declaring the ICO **startDate** and **endDate** where it starts rightaway and ends after one week
+7. Declaring the ICO **startDate** and **endDate** where it starts right away and ends after one week
 
     ```javascript
 
@@ -1559,7 +1559,7 @@ balance of the investors.
     ```
 <br/>
 
-8. it's a common practice to lock the token for an amount of time. We want the tokens to be transferable only after a time after the ICO ends so that the early investors can't dump the tokens on the market, causin the price to collpase.
+8. it's a common practice to lock the token for an amount of time. We want the tokens to be transferable only after a time after the ICO ends so that the early investors can't dump the tokens on the market, causing the price to collapse.
 
     ```javascript
     uint public tokenTradeStart = saleEnd + 604800; //transferable in a week after saleEnd
@@ -1576,7 +1576,7 @@ balance of the investors.
     ```
 <br/>
 
-10. Declaring a `enum` type called `State`
+10. Declaring an `enum` type called `State`
 
     ```javascript
 
@@ -1612,7 +1612,7 @@ balance of the investors.
 
 <br/>
 
-1. One of the requirements of our ICO is that the admin can stop the ICo in case of an emergency. For example, if the deposit address gets compromised, or a security vulnerability is found in the contract. For that, let us declare a **function modifer** called `onlyAdmin` that will be applied to the functions that should be called only by he admin.
+1. One of the requirements of our ICO is that the admin can stop the ICo in case of an emergency. For example, if the deposit address gets compromised, or a security vulnerability is found in the contract. For that, let us declare a **function modifier** called `onlyAdmin` that will be applied to the functions that should be called only by the admin.
 
     ```javascript
 
@@ -1624,7 +1624,7 @@ balance of the investors.
     ```
 <br/>
 
-2. Declaring the function called `halt()` that can be called only by the admin to stop the ICo in case an emergency
+2. Declaring the function called `halt()` that can be called only by the admin to stop the ICo in case of an emergency
 
     ```javascript
 
@@ -1731,7 +1731,7 @@ This function will be called when somebody sends some ether and receives some **
 ![](assets/Screenshot208.png)
 <br/>
 
-4. Now, select the **third** address, for example and try to invest **300 wei** which is less than the minimum investment limit. This will give an error. Let's select the same account and send **1 ETH** to the deposit address. This time the transaction will be mined successfully.
+4. Now, select the **third** address, for example, and try to invest **300 wei** which is less than the minimum investment limit. This will give an error. Let's select the same account and send **1 ETH** to the deposit address. This time the transaction will be mined successfully.
 <br/>
 
 ![](assets/Screenshot209.png)
@@ -1759,7 +1759,7 @@ This function will be called when somebody sends some ether and receives some **
 ## ******Locking Up*** the Tokens***
 <br/>
 
-When people hurry to sell their tokens, the price will drop. It might be good idea to lock up the tokens for a period of time after the ICO ends, thus, making sure that the tokens should not be transferrable right away. To lock up the tokens we will `override` the two functions: `tranfer()` and `transferFrom` in the ICO contract and add the token locking feature.
+When people hurry to sell their tokens, the price will drop. It might be a good idea to lock up the tokens for a period after the ICO ends, thus, making sure that the tokens should not transferrable right away. To lock up the tokens we will `override` the two functions: `tranfer()` and `transferFrom` in the ICO contract and add the token locking feature.
 
 ```javascript
 
