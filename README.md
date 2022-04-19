@@ -1366,7 +1366,7 @@ the following info: allowed[address_of_A][address_of_B] = 80
 
 1. We deploy the the contract **Maftos** on Javascript VM choosing **5B38Da6a701c568545dCfcB03FcB875f56beddC4** as **admin**.
 
-   ![](assets\Screenshot237.png)
+![](assets\Screenshot237.png)
 
 <br/>
 
